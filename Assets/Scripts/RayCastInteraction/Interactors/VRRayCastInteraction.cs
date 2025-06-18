@@ -168,8 +168,8 @@ public class VRRaycastInteraction : BaseRaycastInteraction
             left_lastInteractedObject.GetComponent<RaycastInteractable>().Grab();
 
             StartCoroutine(Left_DragUpdate(left_lastInteractedObject));
-            Left_ChangeHandState(HandState.GRABBING, left_blockChangeAnimation);
-            left_blockChangeAnimation = true;
+            //Left_ChangeHandState(HandState.GRABBING, left_blockChangeAnimation);
+            //left_blockChangeAnimation = true;
         }
         else
         {
@@ -227,23 +227,36 @@ public class VRRaycastInteraction : BaseRaycastInteraction
 
     #region DRAG UPDATE
     // These Functions are active when an object with the correct layermask is selected and the Hand Trigger is down
+    // When the player is dragging an object, the hand dissapears
 
     public virtual IEnumerator Right_DragUpdate(GameObject clickedGameObject)
     {
+        right_controller.SetActive(false);
+        ToggleRayLine(right_rayInteractor, false);
+
         while (playerInputs.XRIRightHandInteraction.Select.ReadValue<float>() != 0)
         {
             // Do Something to Object while dragging
             yield return right_waitForFixedUpdate;
         }
+
+        ToggleRayLine(right_rayInteractor, true);
+        right_controller.SetActive(true);
     }
 
     public virtual IEnumerator Left_DragUpdate(GameObject clickedGameObject)
     {
+        left_controller.SetActive(false);
+        ToggleRayLine(left_rayInteractor, false);
+
         while (playerInputs.XRILeftHandInteraction.Select.ReadValue<float>() != 0)
         {
             // Do Something to Object while dragging
             yield return left_waitForFixedUpdate;
         }
+
+        ToggleRayLine(left_rayInteractor, true);
+        left_controller.SetActive(true);
     }
     #endregion
 
@@ -312,6 +325,12 @@ public class VRRaycastInteraction : BaseRaycastInteraction
     {
         gameObject.GetComponent<XRDirectInteractor>().enabled = state;
         gameObject.GetComponent<SphereCollider>().enabled = state;
+    }
+
+    private void ToggleRayLine(GameObject gameObject, bool state)
+    {
+        gameObject.GetComponent<LineRenderer>().enabled = state;
+        gameObject.GetComponent<XRInteractorLineVisual>().enabled = state;
     }
     #endregion
 

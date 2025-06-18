@@ -117,7 +117,6 @@ GameObject:
   - component: {fileID: 7359484648412624895}
   - component: {fileID: 6494066481283782080}
   - component: {fileID: 3294308024484026401}
-  - component: {fileID: 8903079605072310226}
   - component: {fileID: 3281216433059889380}
   - component: {fileID: 2964576923889093588}
   m_Layer: 0
@@ -134,17 +133,17 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 488948214627983877}
-  m_LocalRotation: {x: -0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.2035, y: 1.4174, z: -40.4596}
-  m_LocalScale: {x: 0.872246, y: 0.872246, z: 0.872246}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 12.49, y: 12.49, z: 12.49}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3372862168734711651}
   - {fileID: 2716386563108655085}
   - {fileID: 2738815127933793631}
   - {fileID: 6977240647882109532}
   m_Father: {fileID: 0}
-  m_RootOrder: 41
+  m_RootOrder: 42
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &6494066481283782080
 Rigidbody:
@@ -325,27 +324,6 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
---- !u!65 &8903079605072310226
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 488948214627983877}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.080365494, y: 0.06311292, z: 0.07207204}
-  m_Center: {x: -0.0034710767, y: 0.0015677896, z: -0.16368684}
 --- !u!114 &3281216433059889380
 MonoBehaviour:
   m_ObjectHideFlags: 0
