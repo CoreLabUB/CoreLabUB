@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public enum HandState { IDLE = 0, POINTING = 1, GRABBING = 2, INTERACT = 3 }
 
@@ -32,7 +33,15 @@ public class VRRaycastInteraction : BaseRaycastInteraction
     private WaitForFixedUpdate right_waitForFixedUpdate = new WaitForFixedUpdate();
     private WaitForFixedUpdate left_waitForFixedUpdate = new WaitForFixedUpdate();
 
-    
+    // Ray and Direct Interactors
+    private bool right_rayDirectState = true; // True -> ray interaction, false -> direct interaction
+    private bool left_rayDirectState = true;
+    [SerializeField] private GameObject right_rayInteractor;
+    [SerializeField] private GameObject left_rayInteractor;
+
+    [SerializeField] private GameObject right_directInteractor;
+    [SerializeField] private GameObject left_directInteractor;
+
     private void Start()
     {
         #region RIGHT HAND
@@ -46,6 +55,8 @@ public class VRRaycastInteraction : BaseRaycastInteraction
         playerInputs.XRIRightHandInteraction.Activate.started += _ => { RightHand_IndexTriggerDown(); };
         playerInputs.XRIRightHandInteraction.Activate.canceled += _ => { RightHand_IndexTriggerUp(); };
 
+        playerInputs.XRIRightHandInteraction.ThumbstickPress.started += _ => { Right_SwitchRayDirectInteraction(); };
+
         #endregion
 
         #region LEFT HAND
@@ -58,7 +69,7 @@ public class VRRaycastInteraction : BaseRaycastInteraction
         playerInputs.XRILeftHandInteraction.Activate.started += _ => { LeftHand_IndexTriggerDown(); };
         playerInputs.XRILeftHandInteraction.Activate.canceled += _ => { LeftHand_IndexTriggerUp(); };
 
-
+        playerInputs.XRILeftHandInteraction.ThumbstickPress.started += _ => { Left_SwitchRayDirectInteraction(); };
         //InputDevices.GetDeviceAtXRNode(XRNode.LeftHand).TryGetFeatureValue(CommonUsages.devicePosition, out Vector3 position);
         //InputDevices.GetDeviceAtXRNode(XRNode.LeftHand).TryGetFeatureValue(CommonUsages.deviceRotation, out Quaternion rotation);
         #endregion
@@ -268,6 +279,39 @@ public class VRRaycastInteraction : BaseRaycastInteraction
         {
             Left_ChangeHandState(HandState.IDLE, left_blockChangeAnimation);
         }
+    }
+    #endregion
+
+    #region XR INTERACTION SWITCH
+    // Function that switches between Ray Interaction and Direct Interaction
+    protected virtual void Right_SwitchRayDirectInteraction()
+    {
+        Debug.Log("THUMNSTICK");
+
+        right_rayDirectState = !right_rayDirectState;
+
+        ToggleRayInteractor(right_rayInteractor, right_rayDirectState);
+        ToggleDirectInteractor(right_directInteractor, !right_rayDirectState);
+    }
+
+    protected virtual void Left_SwitchRayDirectInteraction()
+    {
+        left_rayDirectState = !left_rayDirectState;
+
+        ToggleRayInteractor(left_rayInteractor, left_rayDirectState);
+        ToggleDirectInteractor(left_directInteractor, !left_rayDirectState);
+    }
+
+    private void ToggleRayInteractor(GameObject gameObject, bool state)
+    {
+        gameObject.GetComponent<XRRayInteractor>().enabled = state;
+        gameObject.GetComponent<LineRenderer>().enabled = state;
+        gameObject.GetComponent<XRInteractorLineVisual>().enabled = state;
+    }
+    private void ToggleDirectInteractor(GameObject gameObject, bool state)
+    {
+        gameObject.GetComponent<XRDirectInteractor>().enabled = state;
+        gameObject.GetComponent<SphereCollider>().enabled = state;
     }
     #endregion
 

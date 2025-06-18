@@ -8,13 +8,13 @@ using UnityEngine;
 
 public class BaseRaycastInteraction : MonoBehaviour
 {
-    protected PlayerInputs playerInputs;
+    protected XRIDefaultInputActions playerInputs;
 
     protected Camera playerCamera;
 
     private void Awake()
     {
-        playerInputs = new PlayerInputs();
+        playerInputs = new XRIDefaultInputActions();
         playerCamera = transform.GetChild(0).GetComponent<Camera>();
     }
     private void OnEnable()
