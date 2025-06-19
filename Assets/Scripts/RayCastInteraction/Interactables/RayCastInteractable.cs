@@ -6,12 +6,14 @@ using UnityEngine;
     https://www.linkedin.com/in/miquel-forcada-mercade/
 */
 
-public enum InteractableType { NULL, TEST }
+public enum InteractableType { NULL, MagneticCard }
 public class RaycastInteractable : MonoBehaviour
 {
     protected InteractableType interactableType = InteractableType.NULL;
+    
+    protected bool canDrag = true;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         gameObject.layer = 9; // RaycastInteractable
     }
@@ -23,6 +25,11 @@ public class RaycastInteractable : MonoBehaviour
     public virtual void Grab() // Hand Trigger Down
     {
         Debug.Log("PALO GRAB");
+    }
+
+    public virtual void Drag()
+    {
+        if (!canDrag) { return; }
     }
 
     public virtual void Cancel() // Trigger Up
