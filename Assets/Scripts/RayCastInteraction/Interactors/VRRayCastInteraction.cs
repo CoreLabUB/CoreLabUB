@@ -237,6 +237,7 @@ public class VRRaycastInteraction : BaseRaycastInteraction
         while (playerInputs.XRIRightHandInteraction.Select.ReadValue<float>() != 0)
         {
             // Do Something to Object while dragging
+            right_lastInteractedObject.GetComponent<RaycastInteractable>().Drag();
             yield return right_waitForFixedUpdate;
         }
 
@@ -252,6 +253,7 @@ public class VRRaycastInteraction : BaseRaycastInteraction
         while (playerInputs.XRILeftHandInteraction.Select.ReadValue<float>() != 0)
         {
             // Do Something to Object while dragging
+            left_lastInteractedObject.GetComponent<RaycastInteractable>().Drag();
             yield return left_waitForFixedUpdate;
         }
 
