@@ -5,21 +5,21 @@ using UnityEngine.Events;
 
 public class CardReader : MonoBehaviour
 {
-    // Event that notifies this when palyer is dragging a magnetic card
+    // Event that notifies this when palyer is dragging a magnetic card or doors are open
     public static UnityEvent<bool> toggleCardReaderRaycast = new();
+    public static UnityEvent<CardPerms, bool> toggleSingleCardReaderRaycast = new();
 
     // Magnetic card being dragged -> true, Magnetic card not being dragged -> false
     private bool raycastsActive = false;
-
-    // 
-    private bool doorsOpen = false;
 
     // Raycast Interactable layermask
     [SerializeField] private LayerMask interactableLayerMask;
 
     // Perms to open the door
-    [SerializeField] CardPerms labPerm;
+    [SerializeField] private CardPerms labPerm;
 
+    // Door
+    [SerializeField] DoorLab door;
 
     // Raycasts variables
     private Vector3 raycastOffsets;
@@ -33,10 +33,20 @@ public class CardReader : MonoBehaviour
             raycastsActive = state;
         });
 
+        toggleSingleCardReaderRaycast.AddListener((CardPerms cardPerms, bool state) =>
+        {
+            if (cardPerms != labPerm || !raycastsActive)
+            { return; }
+
+            raycastsActive = state;
+        });
+
         raycastOffsets = new Vector3(0,transform.localScale.y/4, 0);
 
         rayTop = new Ray(transform.position + raycastOffsets, transform.forward);
         rayBot = new Ray(transform.position - raycastOffsets, transform.forward);
+
+        door.SetPerm(labPerm);
     }
 
     private void Update()
@@ -60,12 +70,18 @@ public class CardReader : MonoBehaviour
             if (detectedObject.GetComponent<MagneticCard>().CheckPerm(labPerm))
             {
                 Debug.Log("CardDetected");
+
+                AudioManager.Instance.PlaySoundAt("CardReaderConfirmation", transform.position);
+                door.OpenDoor();
+
+                raycastsActive = false;
                 return;
                 // Play Confirmation Sound, Card Reader Panel Emits Green Light
                 // Open Door, Wait, Close Door
             }
             else
             {
+                AudioManager.Instance.PlaySoundAt("CardReaderError", transform.position);
                 // Play Beep Sound, Card Reader Panel Blinks Red Light
             }
         }
