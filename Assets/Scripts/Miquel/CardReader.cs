@@ -35,7 +35,7 @@ public class CardReader : MonoBehaviour
 
         toggleSingleCardReaderRaycast.AddListener((CardPerms cardPerms, bool state) =>
         {
-            if (cardPerms != labPerm || !raycastsActive)
+            if (cardPerms != labPerm || raycastsActive)
             { return; }
 
             raycastsActive = state;
@@ -46,7 +46,7 @@ public class CardReader : MonoBehaviour
         rayTop = new Ray(transform.position + raycastOffsets, transform.forward);
         rayBot = new Ray(transform.position - raycastOffsets, transform.forward);
 
-        door.SetPerm(labPerm);
+        door.SetCardPerms(labPerm);
     }
 
     private void Update()
@@ -72,9 +72,15 @@ public class CardReader : MonoBehaviour
                 Debug.Log("CardDetected");
 
                 AudioManager.Instance.PlaySoundAt("CardReaderConfirmation", transform.position);
-                door.OpenDoor();
+
+                // Prevent animation stuck with true
+                //door.SetDoor(false);
+                door.SetDoor(true);
 
                 raycastsActive = false;
+
+                detectedObject.GetComponent<MagneticCard>().AddPerms(CardPerms.Biolab);
+
                 return;
                 // Play Confirmation Sound, Card Reader Panel Emits Green Light
                 // Open Door, Wait, Close Door

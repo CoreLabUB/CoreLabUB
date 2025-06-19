@@ -1,11 +1,5 @@
 using UnityEngine;
 
-
-/* ---------------------------------
-    MADE BY MIQUEL FORCADA MERCADE
-    https://www.linkedin.com/in/miquel-forcada-mercade/
-*/
-
 public enum InteractableType { NULL, MagneticCard }
 public class RaycastInteractable : MonoBehaviour
 {
