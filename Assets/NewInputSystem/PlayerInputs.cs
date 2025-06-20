@@ -29,7 +29,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Position"",
-                    ""interactableType"": ""Value"",
+                    ""type"": ""Value"",
                     ""id"": ""eb12f605-4130-48b5-a17f-add1d88d034c"",
                     ""expectedControlType"": ""Vector3"",
                     ""processors"": """",
@@ -38,7 +38,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Rotation"",
-                    ""interactableType"": ""Value"",
+                    ""type"": ""Value"",
                     ""id"": ""15c8489f-511f-4f51-b4b9-e7f82a7ccd4c"",
                     ""expectedControlType"": ""Quaternion"",
                     ""processors"": """",
@@ -47,7 +47,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Is Tracked"",
-                    ""interactableType"": ""Button"",
+                    ""type"": ""Button"",
                     ""id"": ""be73b270-012a-4d45-b917-281fac5b333f"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -56,7 +56,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Tracking State"",
-                    ""interactableType"": ""Value"",
+                    ""type"": ""Value"",
                     ""id"": ""dc2f2dca-3c80-4a6c-9733-eac9985dc238"",
                     ""expectedControlType"": ""Integer"",
                     ""processors"": """",
@@ -65,7 +65,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Eye Gaze Position"",
-                    ""interactableType"": ""Value"",
+                    ""type"": ""Value"",
                     ""id"": ""1b09622b-ab9b-468a-b2b0-158ac6c45f8a"",
                     ""expectedControlType"": ""Vector3"",
                     ""processors"": """",
@@ -74,7 +74,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Eye Gaze Rotation"",
-                    ""interactableType"": ""Value"",
+                    ""type"": ""Value"",
                     ""id"": ""9805771c-2d9b-4263-8e08-16603bee456a"",
                     ""expectedControlType"": ""Quaternion"",
                     ""processors"": """",
@@ -83,7 +83,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Eye Gaze Tracking State"",
-                    ""interactableType"": ""Value"",
+                    ""type"": ""Value"",
                     ""id"": ""c62d0132-ea61-4006-8f6b-c1207b3ae4cb"",
                     ""expectedControlType"": ""Integer"",
                     ""processors"": """",
@@ -276,7 +276,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Navigate"",
-                    ""interactableType"": ""PassThrough"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""1a702a0b-a37a-42e1-922b-cf8ea26c13d1"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
@@ -285,7 +285,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Submit"",
-                    ""interactableType"": ""Button"",
+                    ""type"": ""Button"",
                     ""id"": ""916b3c5f-ecf1-411b-b00f-605e36ef9952"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -294,7 +294,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Cancel"",
-                    ""interactableType"": ""Button"",
+                    ""type"": ""Button"",
                     ""id"": ""11f0393f-0b8d-4746-aaad-76e0fba907a4"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -303,7 +303,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Point"",
-                    ""interactableType"": ""PassThrough"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""f53b833b-3c85-4744-a62f-8ed95f3785c1"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
@@ -312,7 +312,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Click"",
-                    ""interactableType"": ""PassThrough"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""51cb73ec-fd32-4418-bc4b-633c2be56ec7"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -321,7 +321,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""ScrollWheel"",
-                    ""interactableType"": ""PassThrough"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""45efe933-0686-4aa5-aae0-63ebe27a5936"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
@@ -330,7 +330,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""MiddleClick"",
-                    ""interactableType"": ""PassThrough"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""3e5ed54a-7b6b-4db2-bc43-152da01c2832"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -339,7 +339,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""RightClick"",
-                    ""interactableType"": ""PassThrough"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""baa2b9ab-73ea-4bab-a0bf-36c46ac91e83"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -741,7 +741,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Select"",
-                    ""interactableType"": ""Button"",
+                    ""type"": ""Button"",
                     ""id"": ""84609d96-6f32-4834-a5e5-071915efdae7"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -750,7 +750,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Select Value"",
-                    ""interactableType"": ""Value"",
+                    ""type"": ""Value"",
                     ""id"": ""47ae1879-9356-4e27-8035-2ca716c6047b"",
                     ""expectedControlType"": ""Axis"",
                     ""processors"": """",
@@ -759,7 +759,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Activate"",
-                    ""interactableType"": ""Button"",
+                    ""type"": ""Button"",
                     ""id"": ""3fdf9bc2-c887-47e8-a4fc-c0cd46768d75"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -768,7 +768,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Activate Value"",
-                    ""interactableType"": ""Value"",
+                    ""type"": ""Value"",
                     ""id"": ""bb647409-95ea-4d89-9936-af5a4a312b4a"",
                     ""expectedControlType"": ""Axis"",
                     ""processors"": """",
@@ -777,7 +777,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""UI Press"",
-                    ""interactableType"": ""Button"",
+                    ""type"": ""Button"",
                     ""id"": ""9de276ff-1f22-44c0-85e8-f7c92c8fcc11"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -786,7 +786,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""UI Press Value"",
-                    ""interactableType"": ""Value"",
+                    ""type"": ""Value"",
                     ""id"": ""8cc67f3c-223e-465c-97d8-8fafac44727f"",
                     ""expectedControlType"": ""Axis"",
                     ""processors"": """",
@@ -795,7 +795,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Rotate Anchor"",
-                    ""interactableType"": ""Value"",
+                    ""type"": ""Value"",
                     ""id"": ""9d72818e-cce0-4fe5-9452-baa0f1da6f3f"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
@@ -804,7 +804,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Translate Anchor"",
-                    ""interactableType"": ""Value"",
+                    ""type"": ""Value"",
                     ""id"": ""b5df7ced-7fd9-40f5-8d3d-95ee6293256e"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
@@ -953,7 +953,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Position"",
-                    ""interactableType"": ""Value"",
+                    ""type"": ""Value"",
                     ""id"": ""738ddda9-d9de-4928-9515-7ba0aec97a77"",
                     ""expectedControlType"": ""Vector3"",
                     ""processors"": """",
@@ -962,7 +962,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Rotation"",
-                    ""interactableType"": ""Value"",
+                    ""type"": ""Value"",
                     ""id"": ""537ca085-9eb2-408d-8bf3-874cc44e2f2d"",
                     ""expectedControlType"": ""Quaternion"",
                     ""processors"": """",
@@ -971,7 +971,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Is Tracked"",
-                    ""interactableType"": ""Button"",
+                    ""type"": ""Button"",
                     ""id"": ""bd125cc8-2e6d-451f-a917-d91d2b379c22"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -980,7 +980,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Tracking State"",
-                    ""interactableType"": ""Value"",
+                    ""type"": ""Value"",
                     ""id"": ""5355ed5c-ff0b-4f8b-8b28-d28d7c47a230"",
                     ""expectedControlType"": ""Integer"",
                     ""processors"": """",
@@ -989,7 +989,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Haptic Device"",
-                    ""interactableType"": ""PassThrough"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""914df610-a4f0-4475-bdb8-909d5bf156df"",
                     ""expectedControlType"": """",
                     ""processors"": """",
@@ -998,7 +998,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Aim Position"",
-                    ""interactableType"": ""Value"",
+                    ""type"": ""Value"",
                     ""id"": ""dc72d19f-0357-4266-a1aa-73c1a4872065"",
                     ""expectedControlType"": ""Vector3"",
                     ""processors"": """",
@@ -1007,7 +1007,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Aim Rotation"",
-                    ""interactableType"": ""Value"",
+                    ""type"": ""Value"",
                     ""id"": ""dbd09048-05ff-4d75-a15c-5f99afa96431"",
                     ""expectedControlType"": ""Quaternion"",
                     ""processors"": """",
@@ -1016,7 +1016,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Aim Flags"",
-                    ""interactableType"": ""Value"",
+                    ""type"": ""Value"",
                     ""id"": ""5296299a-4ab6-4082-81f8-74eb874b9d3a"",
                     ""expectedControlType"": ""Integer"",
                     ""processors"": """",
@@ -1025,7 +1025,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Pinch Position"",
-                    ""interactableType"": ""Value"",
+                    ""type"": ""Value"",
                     ""id"": ""fc2d3750-4205-4a42-989f-7a67347f4ed0"",
                     ""expectedControlType"": ""Vector3"",
                     ""processors"": """",
@@ -1034,7 +1034,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Poke Position"",
-                    ""interactableType"": ""Value"",
+                    ""type"": ""Value"",
                     ""id"": ""e1371a7d-0aee-4d3f-886b-9b4359611b91"",
                     ""expectedControlType"": ""Vector3"",
                     ""processors"": """",
@@ -1043,7 +1043,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Poke Rotation"",
-                    ""interactableType"": ""Value"",
+                    ""type"": ""Value"",
                     ""id"": ""db56f37c-8550-4c07-ad1d-a1431222676b"",
                     ""expectedControlType"": ""Quaternion"",
                     ""processors"": """",
@@ -1052,7 +1052,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""ThumbStickClicked"",
-                    ""interactableType"": ""Button"",
+                    ""type"": ""Button"",
                     ""id"": ""43824124-76d4-4497-be4b-3eb690de3c5a"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -1289,7 +1289,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Select"",
-                    ""interactableType"": ""Button"",
+                    ""type"": ""Button"",
                     ""id"": ""fc80e1bd-bd81-4fbf-a7ba-8ac4c18643bd"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -1298,7 +1298,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Select Value"",
-                    ""interactableType"": ""Value"",
+                    ""type"": ""Value"",
                     ""id"": ""a6cc4546-f981-4162-abcc-6efc7cff2074"",
                     ""expectedControlType"": ""Axis"",
                     ""processors"": """",
@@ -1307,7 +1307,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Activate"",
-                    ""interactableType"": ""Button"",
+                    ""type"": ""Button"",
                     ""id"": ""0968d24d-d484-4a30-9a81-b3349b8468fd"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -1316,7 +1316,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Activate Value"",
-                    ""interactableType"": ""Value"",
+                    ""type"": ""Value"",
                     ""id"": ""5aec5bd1-0c7b-4fa7-b1ea-f398dae14ea4"",
                     ""expectedControlType"": ""Axis"",
                     ""processors"": """",
@@ -1325,7 +1325,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""UI Press"",
-                    ""interactableType"": ""Button"",
+                    ""type"": ""Button"",
                     ""id"": ""6b1d0193-9b91-48ba-b56c-9072ad93469b"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -1334,7 +1334,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""UI Press Value"",
-                    ""interactableType"": ""Value"",
+                    ""type"": ""Value"",
                     ""id"": ""6811423a-cc71-4b41-a397-7c23bc8fbd72"",
                     ""expectedControlType"": ""Axis"",
                     ""processors"": """",
@@ -1343,7 +1343,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Rotate Anchor"",
-                    ""interactableType"": ""Value"",
+                    ""type"": ""Value"",
                     ""id"": ""4437f0d0-1235-42fe-918f-ff2e7d88fb5a"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
@@ -1352,7 +1352,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Translate Anchor"",
-                    ""interactableType"": ""Value"",
+                    ""type"": ""Value"",
                     ""id"": ""ed608bc0-43d4-4299-9ac9-6bb9bf25458c"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
@@ -1501,7 +1501,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Position"",
-                    ""interactableType"": ""Value"",
+                    ""type"": ""Value"",
                     ""id"": ""261b43f8-e154-4809-aadd-c45c8495c0ea"",
                     ""expectedControlType"": ""Vector3"",
                     ""processors"": """",
@@ -1510,7 +1510,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Rotation"",
-                    ""interactableType"": ""Value"",
+                    ""type"": ""Value"",
                     ""id"": ""a543f181-4fcb-482f-8205-121bb50c3b45"",
                     ""expectedControlType"": ""Quaternion"",
                     ""processors"": """",
@@ -1519,7 +1519,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Is Tracked"",
-                    ""interactableType"": ""Button"",
+                    ""type"": ""Button"",
                     ""id"": ""c6b96393-66c0-4df6-8f48-96b1ba4b726c"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -1528,7 +1528,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Tracking State"",
-                    ""interactableType"": ""Value"",
+                    ""type"": ""Value"",
                     ""id"": ""66753a90-6b50-4b06-adfc-7366fa1cbe47"",
                     ""expectedControlType"": ""Integer"",
                     ""processors"": """",
@@ -1537,7 +1537,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Haptic Device"",
-                    ""interactableType"": ""PassThrough"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""310f8d18-da7c-4dd4-bdfb-702e08264181"",
                     ""expectedControlType"": """",
                     ""processors"": """",
@@ -1546,7 +1546,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Aim Position"",
-                    ""interactableType"": ""Value"",
+                    ""type"": ""Value"",
                     ""id"": ""e8e8cc9f-83d0-4eec-b6c4-ae7bdd1bb645"",
                     ""expectedControlType"": ""Vector3"",
                     ""processors"": """",
@@ -1555,7 +1555,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Aim Rotation"",
-                    ""interactableType"": ""Value"",
+                    ""type"": ""Value"",
                     ""id"": ""825e3474-209c-4cb3-b608-5f7d5eac0f38"",
                     ""expectedControlType"": ""Quaternion"",
                     ""processors"": """",
@@ -1564,7 +1564,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Aim Flags"",
-                    ""interactableType"": ""Value"",
+                    ""type"": ""Value"",
                     ""id"": ""21fb25ab-955e-4d34-bc0e-381a884cf302"",
                     ""expectedControlType"": ""Integer"",
                     ""processors"": """",
@@ -1573,7 +1573,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Pinch Position"",
-                    ""interactableType"": ""Value"",
+                    ""type"": ""Value"",
                     ""id"": ""efdca63f-9ec6-4759-bc74-0ac84eeeb388"",
                     ""expectedControlType"": ""Vector3"",
                     ""processors"": """",
@@ -1582,7 +1582,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Poke Position"",
-                    ""interactableType"": ""Value"",
+                    ""type"": ""Value"",
                     ""id"": ""f2d026fd-84b7-4afa-bbd1-aeedbad7f565"",
                     ""expectedControlType"": ""Vector3"",
                     ""processors"": """",
@@ -1591,7 +1591,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Poke Rotation"",
-                    ""interactableType"": ""Value"",
+                    ""type"": ""Value"",
                     ""id"": ""e81d3555-a705-4635-9223-ce0022918a84"",
                     ""expectedControlType"": ""Quaternion"",
                     ""processors"": """",
