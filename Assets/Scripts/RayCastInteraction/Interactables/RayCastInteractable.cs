@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum InteractableType { NULL, MagneticCard }
+public enum InteractableType { NULL, MagneticCard, Stick }
 public class RaycastInteractable : MonoBehaviour
 {
     protected InteractableType interactableType = InteractableType.NULL;

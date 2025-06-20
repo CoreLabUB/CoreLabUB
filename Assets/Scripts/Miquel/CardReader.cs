@@ -19,12 +19,13 @@ public class CardReader : MonoBehaviour
     [SerializeField] private CardPerms labPerm;
 
     // Door
-    [SerializeField] DoorLab door;
+    [SerializeField] private DoorLab door;
 
     // Raycasts variables
     private Vector3 raycastOffsets;
-    Ray rayTop;
-    Ray rayBot;
+    private Ray rayTop;
+    private Ray rayBot;
+    private float rayDistance = 0.05f;
 
     private void Awake()
     {
@@ -57,10 +58,10 @@ public class CardReader : MonoBehaviour
         RaycastHit hitBot;
 
         // Tow Raycast for better precission
-        if (!Physics.Raycast(rayTop, out hitTop, 2.0f, interactableLayerMask))
+        if (!Physics.Raycast(rayTop, out hitTop, rayDistance , interactableLayerMask))
         { return; }
 
-        if (!Physics.Raycast(rayBot, out hitBot, 2.0f, interactableLayerMask))
+        if (!Physics.Raycast(rayBot, out hitBot, rayDistance, interactableLayerMask))
         { return; }
 
         GameObject detectedObject = hitTop.transform.gameObject;
