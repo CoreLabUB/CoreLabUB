@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Pollen : BaseSubstance
 {
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         substanceType = SubstanceType.Pollen;
     }
 

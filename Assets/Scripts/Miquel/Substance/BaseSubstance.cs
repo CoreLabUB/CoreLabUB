@@ -4,15 +4,16 @@ using UnityEngine;
 
 
 public enum SubstanceType { NULL, Pollen }
-public class BaseSubstance : MonoBehaviour
+public class BaseSubstance : RaycastTarget
 {
     protected SubstanceType substanceType;
 
     [SerializeField] private Material substanceMaterial;
 
-    void Awake()
+    protected override void Awake()
     {
-        gameObject.layer = 10; // SubstanceInteractable
+        base.Awake();
+        GetComponent<Renderer>().material = substanceMaterial;
     }
 
     public SubstanceType GetSubstanceType()
@@ -23,5 +24,12 @@ public class BaseSubstance : MonoBehaviour
     public Material GetSubstanceMaterial()
     {
         return substanceMaterial;
+    }
+
+    public override void OnRaycastEnter(GameObject emitter)
+    {
+        emitter.GetComponent<Stick>().ChangeHead(substanceMaterial);
+        emitter.GetComponent<Stick>().SetSubstance(this);
+        Destroy(gameObject);
     }
 }

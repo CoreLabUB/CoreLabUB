@@ -30,6 +30,7 @@ public class RaycastInteractable : MonoBehaviour
     {
         Debug.Log("PALO CANCEL");
     }
+
     public InteractableType GetInteractableType()
     {
         return interactableType;
