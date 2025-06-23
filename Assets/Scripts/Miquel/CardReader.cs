@@ -49,9 +49,16 @@ public class CardReader : MonoBehaviour
 
         door.SetCardPerms(labPerm);
     }
-
+    private void OnDrawGizmos()
+    {
+        rayTop = new Ray(transform.position + raycastOffsets, transform.forward);
+        Gizmos.color = Color.green;
+        Gizmos.DrawRay(rayTop);
+    }
     private void Update()
     {
+        
+
         if (!raycastsActive) { return; }
 
         RaycastHit hitTop;
@@ -80,7 +87,7 @@ public class CardReader : MonoBehaviour
 
                 raycastsActive = false;
 
-                detectedObject.GetComponent<MagneticCard>().AddPerms(CardPerms.Biolab);
+                //detectedObject.GetComponent<MagneticCard>().AddPerms(CardPerms.Biolab);
 
                 return;
                 // Play Confirmation Sound, Card Reader Panel Emits Green Light
@@ -90,6 +97,7 @@ public class CardReader : MonoBehaviour
             {
                 AudioManager.Instance.PlaySoundAt("CardReaderError", transform.position);
                 // Play Beep Sound, Card Reader Panel Blinks Red Light
+                raycastsActive = false;
             }
         }
     }

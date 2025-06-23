@@ -10,10 +10,13 @@ public class MagneticCard : RaycastInteractable
     //private static MagneticCard instance;
     //public static MagneticCard Instance { get { if (instance == null) { instance = new MagneticCard(); } return instance;  } }
 
+    [SerializeField] CardPerms initialCardPerm;
+
     Dictionary<CardPerms, bool> cardPerms = new Dictionary<CardPerms, bool>();
 
     // This list must follow the CardPerms enum order
     [SerializeField] List<Material> cardMaterials = new List<Material>();
+
 
     protected override void Awake()
     {
@@ -24,11 +27,14 @@ public class MagneticCard : RaycastInteractable
         // Set Interactable Type
         interactableType = InteractableType.MagneticCard;
 
-        // Adding Card Perms
+        // Adding Card Perms 
         cardPerms.Add(CardPerms.Archeolab, true);
         cardPerms.Add(CardPerms.Biolab, false);
         cardPerms.Add(CardPerms.Geolab, false);
         cardPerms.Add(CardPerms.Nanolab, false);
+
+        // Change bool to True to Change Card perms and Material
+        AddPerms(initialCardPerm);
     }
 
     public override void Grab()

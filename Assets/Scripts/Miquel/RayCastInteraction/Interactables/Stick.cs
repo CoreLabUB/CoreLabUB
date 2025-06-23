@@ -35,6 +35,12 @@ public class Stick : RaycastInteractable
         headAudio.Play();
         headAudio.Pause();
     }
+    private void OnDrawGizmos()
+    {
+        Ray ray = new Ray(transform.position + headPosition, transform.forward);
+        Gizmos.color = Color.green;
+        Gizmos.DrawRay(ray);
+    }
 
     public override void Drag()
     {
@@ -81,7 +87,14 @@ public class Stick : RaycastInteractable
 
     public void ChangeHead(Material material)
     {
-        transform.GetChild(0).GetComponent<Renderer>().material = material;
+        transform.GetComponent<Renderer>().materials[1] = material;
+
+        List<Material> newMaterial = new List<Material>();
+        newMaterial.Add(transform.GetComponent<Renderer>().materials[0]);
+        newMaterial.Add(material);
+
+        transform.GetComponent<Renderer>().SetMaterials(newMaterial);
+        Debug.Log(transform.GetComponent<Renderer>().materials[1].ToString());
     }
 
     public void SetSubstance(BaseSubstance substanceFound)
