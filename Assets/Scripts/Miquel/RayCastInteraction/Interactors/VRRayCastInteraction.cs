@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public enum HandState { IDLE = 0, POINTING = 1, GRABBING = 2, INTERACT = 3 }
@@ -42,6 +43,9 @@ public class VRRaycastInteraction : BaseRaycastInteraction
     [SerializeField] private GameObject right_directInteractor;
     [SerializeField] private GameObject left_directInteractor;
 
+    public static UnityEvent right_resetHandAnimation = new();
+    public static UnityEvent left_resetHandAnimation = new();
+
     private void Start()
     {
         #region RIGHT HAND
@@ -56,6 +60,12 @@ public class VRRaycastInteraction : BaseRaycastInteraction
         playerInputs.XRIRightHandInteraction.Activate.canceled += _ => { RightHand_IndexTriggerUp(); };
 
         playerInputs.XRIRightHandInteraction.ThumbstickPress.started += _ => { Right_SwitchRayDirectInteraction(); };
+
+        right_resetHandAnimation.AddListener(() => 
+        {
+            right_blockChangeAnimation = false;
+            Right_ChangeHandState(HandState.IDLE, right_blockChangeAnimation);       
+        });
 
         #endregion
 
@@ -72,6 +82,12 @@ public class VRRaycastInteraction : BaseRaycastInteraction
         playerInputs.XRILeftHandInteraction.ThumbstickPress.started += _ => { Left_SwitchRayDirectInteraction(); };
         //InputDevices.GetDeviceAtXRNode(XRNode.LeftHand).TryGetFeatureValue(CommonUsages.devicePosition, out Vector3 position);
         //InputDevices.GetDeviceAtXRNode(XRNode.LeftHand).TryGetFeatureValue(CommonUsages.deviceRotation, out Quaternion rotation);
+
+        left_resetHandAnimation.AddListener(() =>
+        {
+            left_blockChangeAnimation = false;
+            Left_ChangeHandState(HandState.IDLE, left_blockChangeAnimation);
+        });
         #endregion
     }
 
@@ -108,7 +124,11 @@ public class VRRaycastInteraction : BaseRaycastInteraction
     protected virtual void RightHand_HandTriggerUp()
     {
         if (right_lastInteractedObject == null)
-        { return; } 
+        {
+            right_blockChangeAnimation = false;
+            Right_ChangeHandState(HandState.IDLE, right_blockChangeAnimation); 
+            return; 
+        } 
 
         right_blockChangeAnimation = false;
         Right_ChangeHandState(HandState.POINTING, right_blockChangeAnimation);
@@ -234,7 +254,7 @@ public class VRRaycastInteraction : BaseRaycastInteraction
         right_controller.SetActive(false);
         ToggleRayLine(right_rayInteractor, false);
 
-        while (playerInputs.XRIRightHandInteraction.Select.ReadValue<float>() != 0)
+        while (playerInputs.XRIRightHandInteraction.Select.ReadValue<float>() != 0 && right_lastInteractedObject != null)
         {
             // Do Something to Object while dragging
             right_lastInteractedObject.GetComponent<RaycastInteractable>().Drag();
@@ -250,7 +270,7 @@ public class VRRaycastInteraction : BaseRaycastInteraction
         left_controller.SetActive(false);
         ToggleRayLine(left_rayInteractor, false);
 
-        while (playerInputs.XRILeftHandInteraction.Select.ReadValue<float>() != 0)
+        while (playerInputs.XRILeftHandInteraction.Select.ReadValue<float>() != 0 && left_lastInteractedObject != null)
         {
             // Do Something to Object while dragging
             left_lastInteractedObject.GetComponent<RaycastInteractable>().Drag();

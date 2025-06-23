@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum InteractableType { NULL, MagneticCard }
+public enum InteractableType { NULL, MagneticCard, Stick }
 public class RaycastInteractable : MonoBehaviour
 {
     protected InteractableType interactableType = InteractableType.NULL;
@@ -14,22 +14,24 @@ public class RaycastInteractable : MonoBehaviour
 
     public virtual void Interact() // Index Trigger Down
     {
-        Debug.Log("PALO INTERACT");
+        Debug.Log("INTERACT");
     }
     public virtual void Grab() // Hand Trigger Down
     {
-        Debug.Log("PALO GRAB");
+        Debug.Log("GRAB");
     }
 
     public virtual void Drag()
     {
         if (!canDrag) { return; }
+        Debug.Log("DRAG");
     }
 
     public virtual void Cancel() // Trigger Up
     {
-        Debug.Log("PALO CANCEL");
+        Debug.Log("CANCEL");
     }
+
     public InteractableType GetInteractableType()
     {
         return interactableType;
