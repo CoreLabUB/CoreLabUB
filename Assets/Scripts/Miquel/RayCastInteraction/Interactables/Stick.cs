@@ -23,8 +23,6 @@ public class Stick : RaycastInteractable
 
     [SerializeField] protected LayerMask substanceLayer;
 
-    GameObject detectedSubstance;
-
     private AudioSource headAudio;
 
     protected override void Awake()
@@ -40,21 +38,17 @@ public class Stick : RaycastInteractable
 
     public override void Drag()
     {
-        if (!enableDetection) { Debug.Log("NOT DETECTION"); return; }
+        if (!enableDetection) { return; }
 
         Ray ray = new Ray(transform.position + headPosition, transform.forward);
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, rayDistance, substanceLayer))
         {
-            Debug.Log(hit.transform.name);
             RaycastTarget targetHit = hit.transform.GetComponent<RaycastTarget>();
 
             if (previousTarget == null) // Initial Detection
             { previousTarget = targetHit; }
-
-            Debug.Log(targetHit.GetId());
-            Debug.Log(previousTarget.GetId());
 
             if (previousTarget.GetId() != targetHit.GetId())
             {
@@ -90,49 +84,6 @@ public class Stick : RaycastInteractable
         transform.GetChild(0).GetComponent<Renderer>().material = material;
     }
 
-    private void SwipeToCollectSubstance(Ray ray)
-    {
-        if (hasSubstance) { return; }
-
-        RaycastHit hit;
-
-        //SwippingHeadAudio(ray);
-
-        if (!Physics.Raycast(ray, out hit, rayDistance, substanceLayer))
-        { return; }
-
-        // Found Substance
-        substance = hit.transform.GetComponent<BaseSubstance>();
-        hasSubstance = true;
-
-        substance.OnRaycastEnter(gameObject);
-
-        AudioManager.Instance.PlaySoundAt("StickSuccess", hit.transform.position);
-        headAudio.Stop();
-
-        Destroy(hit.transform.gameObject);
-    }
-
-    
-
-    private void SwipeToPutSubstanceInSample(Ray ray)
-    {
-        if (!hasSubstance) { return; }
-
-        RaycastHit hit;
-
-        //if (!Physics.Raycast(ray, out hit, rayDistance, substanceSampleLayer))
-        //{ return; }
-
-        // Found Substance
-        //hit.transform.GetComponent<SubstanceSample>();
-
-        //AudioManager.Instance.PlaySoundAt("StickSuccess", hit.transform.position);
-        headAudio.Stop();
-
-        Destroy(gameObject);
-    }
-
     public void SetSubstance(BaseSubstance substanceFound)
     {
         substance = substanceFound;
@@ -152,5 +103,10 @@ public class Stick : RaycastInteractable
     public Material GetSubstanceMaterial()
     {
         return substance.GetSubstanceMaterial();
-    }    
+    }
+
+    public void OnDestroy()
+    {
+        Cancel();
+    }
 }

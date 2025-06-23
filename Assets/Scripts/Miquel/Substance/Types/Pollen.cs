@@ -6,7 +6,7 @@ public class Pollen : BaseSubstance
 {
     protected override void Awake()
     {
-        base.Awake();
+        //GetComponent<Renderer>().material = substanceMaterial;
         substanceType = SubstanceType.Pollen;
     }
 

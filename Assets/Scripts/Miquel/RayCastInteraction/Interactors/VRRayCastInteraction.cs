@@ -234,7 +234,7 @@ public class VRRaycastInteraction : BaseRaycastInteraction
         right_controller.SetActive(false);
         ToggleRayLine(right_rayInteractor, false);
 
-        while (playerInputs.XRIRightHandInteraction.Select.ReadValue<float>() != 0)
+        while (playerInputs.XRIRightHandInteraction.Select.ReadValue<float>() != 0 && right_lastInteractedObject != null)
         {
             // Do Something to Object while dragging
             right_lastInteractedObject.GetComponent<RaycastInteractable>().Drag();
@@ -250,7 +250,7 @@ public class VRRaycastInteraction : BaseRaycastInteraction
         left_controller.SetActive(false);
         ToggleRayLine(left_rayInteractor, false);
 
-        while (playerInputs.XRILeftHandInteraction.Select.ReadValue<float>() != 0)
+        while (playerInputs.XRILeftHandInteraction.Select.ReadValue<float>() != 0 && left_lastInteractedObject != null)
         {
             // Do Something to Object while dragging
             left_lastInteractedObject.GetComponent<RaycastInteractable>().Drag();

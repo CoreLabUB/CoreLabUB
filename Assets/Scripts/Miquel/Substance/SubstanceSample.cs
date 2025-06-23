@@ -21,13 +21,14 @@ public class SubstanceSample : RaycastTarget
 
     public override void OnRaycastEnter(GameObject emitter)
     {
-        Debug.Log("ENTERING SAMPLE " + emitter.GetComponent<Stick>().GetState().ToString());
-        if (hasSubstance || emitter.GetComponent<Stick>().GetState() == StickState.GetSample) { return; }
-        Debug.Log("ENTERED SAMPLE");
+        if (hasSubstance) { return; }
+
+        if (emitter.GetComponent<Stick>().GetState() == StickState.GetSample) { return; }
+
         InsertSubstance(emitter.GetComponent<Stick>().GetSubstanceMaterial());
         hasSubstance = true;
 
-        emitter.GetComponent<Stick>().Cancel();
+        
         Destroy(emitter);
     }
 }
