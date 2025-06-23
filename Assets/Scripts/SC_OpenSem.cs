@@ -12,7 +12,7 @@ public class DoorController : MonoBehaviour
     {
         // Guardamos la rotación inicial como "cerrada"
         closedRotation = transform.localRotation;
-        openRotation = Quaternion.Euler(0, 180, 0); // Rotación abierta
+        openRotation = Quaternion.Euler(0, -90, 0); // Rotación abierta
     }
 
 

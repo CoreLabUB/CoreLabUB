@@ -89,6 +89,9 @@ public class Stick : RaycastInteractable
         substance = substanceFound;
         stickState = StickState.PutSample;
     }  
+
+    public BaseSubstance GetSubstance()
+    { return substance; }
     
     public AudioSource GetHeadAudioSource()
     {

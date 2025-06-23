@@ -6,6 +6,7 @@ public class SubstanceSample : RaycastTarget
 {
     bool hasSubstance = false;
     GameObject sample;
+    SubstanceType substanceType;
 
     protected override void Awake()
     {
@@ -13,10 +14,11 @@ public class SubstanceSample : RaycastTarget
         sample = transform.GetChild(0).GetChild(0).gameObject;
     }
 
-    public void InsertSubstance(Material sampleMaterial)
+    public void InsertSubstance(Material sampleMaterial, SubstanceType substance)
     {
         sample.SetActive(true);
         sample.GetComponent<Renderer>().material = sampleMaterial;
+        substanceType = substance;
     }
 
     public override void OnRaycastEnter(GameObject emitter)
@@ -25,10 +27,13 @@ public class SubstanceSample : RaycastTarget
 
         if (emitter.GetComponent<Stick>().GetState() == StickState.GetSample) { return; }
 
-        InsertSubstance(emitter.GetComponent<Stick>().GetSubstanceMaterial());
+        InsertSubstance(emitter.GetComponent<Stick>().GetSubstanceMaterial(), emitter.GetComponent<Stick>().GetSubstance().GetSubstanceType());
         hasSubstance = true;
 
         
         Destroy(emitter);
     }
+
+    public SubstanceType GetSubstanceType() 
+    { return substanceType; }
 }
