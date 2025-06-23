@@ -3,17 +3,7 @@ guid: 06ff98b7b80c0e94c8293b109cdaa790
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Ladrillos
-    second: {fileID: 2100000, guid: aebe93966bf343747a0609ed48dcd4df, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: paredInterna
-    second: {fileID: 2100000, guid: f704fd297be82bb40955be523b44c096, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
