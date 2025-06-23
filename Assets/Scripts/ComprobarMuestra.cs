@@ -18,16 +18,17 @@ public class ComprobarMuestra : MonoBehaviour
     {
         if (!door.GetSemIsOpen() && isMustra && polen != null)
         {
-            polen.SetActive(true);
+            polen.SetActive(true); // Iniciar Minijuego
             polen = null;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        DepositarMuestra temp = other.GetComponent<DepositarMuestra>();
+        //DepositarMuestra temp = other.GetComponent<DepositarMuestra>();
 
-        if (other.tag == "Muestra" && temp.tieneMuestra)
+        //if (other.tag == "Muestra" && temp.tieneMuestra)
+        if (other.tag == "Muestra")
         {
             isMustra = true;
         }
