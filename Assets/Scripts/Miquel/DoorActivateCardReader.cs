@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DoorActivateCardReader : MonoBehaviour
 {
+    // This class is for when animation ends to Trigger ActivateCardReader
+
     private CardPerms cardPerms;
 
     public void SetCardPerms(CardPerms perms)
@@ -13,7 +15,7 @@ public class DoorActivateCardReader : MonoBehaviour
 
     public void ActivateCardReader()
     {
-        CardReader.toggleSingleCardReaderRaycast.Invoke(cardPerms, true);
+        CardReader.toggleCardReaderRaycast.Invoke(true);
         transform.parent.GetComponent<DoorLab>().SetDoor(false);
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -26,6 +27,8 @@ public class CardReader : MonoBehaviour
     private Ray rayTop;
     private Ray rayBot;
     private float rayDistance = 0.05f;
+
+    private int numBlinks = 10;
 
     private void Awake()
     {
@@ -57,8 +60,6 @@ public class CardReader : MonoBehaviour
     }
     private void Update()
     {
-        
-
         if (!raycastsActive) { return; }
 
         RaycastHit hitTop;
@@ -77,28 +78,62 @@ public class CardReader : MonoBehaviour
         {
             if (detectedObject.GetComponent<MagneticCard>().CheckPerm(labPerm))
             {
-                Debug.Log("CardDetected");
+                // Play Confirmation Sound, Card Reader Panel Blinks Green Light
+
+                StartCoroutine(BlinkConfirmation());
 
                 AudioManager.Instance.PlaySoundAt("CardReaderConfirmation", transform.position);
 
                 // Prevent animation stuck with true
                 //door.SetDoor(false);
                 door.SetDoor(true);
-
-                raycastsActive = false;
-
-                //detectedObject.GetComponent<MagneticCard>().AddPerms(CardPerms.Biolab);
-
-                return;
-                // Play Confirmation Sound, Card Reader Panel Emits Green Light
-                // Open Door, Wait, Close Door
             }
             else
             {
+                // Play Errop Sound, Card Reader Panel Blinks Red Light
+
+                StartCoroutine(BlinkError());
+
                 AudioManager.Instance.PlaySoundAt("CardReaderError", transform.position);
-                // Play Beep Sound, Card Reader Panel Blinks Red Light
-                raycastsActive = false;
+                
             }
+
+            raycastsActive = false;
         }
+    }
+
+    private IEnumerator BlinkConfirmation()
+    {
+        int counter = 0;
+        while (counter <= numBlinks)
+        {
+            ChangeEmissionColor(Color.green);
+            yield return new WaitForSeconds(0.05f);
+            ChangeEmissionColor(Color.white);
+            yield return new WaitForSeconds(0.05f);
+            counter++;
+        }
+        yield return null;
+    }
+    
+    private IEnumerator BlinkError()
+    {
+        int counter = 0;
+        while (counter <= numBlinks)
+        {
+            ChangeEmissionColor(Color.red);
+            yield return new WaitForSeconds(0.08f);
+            ChangeEmissionColor(Color.white);
+            yield return new WaitForSeconds(0.08f);
+            counter++;
+        }
+        yield return null;
+
+        raycastsActive = true;
+    }
+
+    private void ChangeEmissionColor(Color color)
+    {
+        transform.parent.GetComponent<Renderer>().material.SetColor("_EmissionColor", color);
     }
 }
