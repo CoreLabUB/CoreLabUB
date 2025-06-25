@@ -19,7 +19,7 @@ public class Stick : RaycastInteractable
     private BaseSubstance substance;
 
     private Vector3 headPosition  = new Vector3(0,0,0.02f);
-    private float rayDistance = 0.05f;
+    private float rayDistance = 0.08f;
 
     [SerializeField] protected LayerMask substanceLayer;
 
