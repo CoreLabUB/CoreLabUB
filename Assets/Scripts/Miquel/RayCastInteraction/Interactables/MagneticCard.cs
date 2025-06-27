@@ -5,7 +5,7 @@ using UnityEngine;
 // Permissions to access the Labs, order in which the labs are unlocked. switch order if needed
 public enum CardPerms { Archeolab = 0, Biolab = 1, Geolab = 2, Nanolab = 3 }
 
-public class MagneticCard : RaycastInteractable
+public class MagneticCard : AttachableObject
 {
     //private static MagneticCard instance;
     //public static MagneticCard Instance { get { if (instance == null) { instance = new MagneticCard(); } return instance;  } }
@@ -16,7 +16,6 @@ public class MagneticCard : RaycastInteractable
 
     // This list must follow the CardPerms enum order
     [SerializeField] List<Material> cardMaterials = new List<Material>();
-
 
     protected override void Awake()
     {
@@ -44,6 +43,12 @@ public class MagneticCard : RaycastInteractable
 
     public override void Cancel()
     {
+        if (!isHovering && !isAttatch)
+        {
+            Debug.Log("ENTERED CANCEL CARD");
+            ReturnToPreviousPosition();
+        }
+
         CardReader.toggleCardReaderRaycast.Invoke(false);
     }
 

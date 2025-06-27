@@ -24,7 +24,6 @@ public class RaycastInteractable : MonoBehaviour
     public virtual void Drag()
     {
         if (!canDrag) { return; }
-        Debug.Log("DRAG");
     }
 
     public virtual void Cancel() // Trigger Up
