@@ -46,6 +46,8 @@ public class VRRaycastInteraction : BaseRaycastInteraction
     public static UnityEvent right_resetHandAnimation = new();
     public static UnityEvent left_resetHandAnimation = new();
 
+    [SerializeField] private XRSocketInteractor attachInteractor;
+
     private void Start()
     {
         #region RIGHT HAND
@@ -87,6 +89,44 @@ public class VRRaycastInteraction : BaseRaycastInteraction
         {
             left_blockChangeAnimation = false;
             Left_ChangeHandState(HandState.IDLE, left_blockChangeAnimation);
+        });
+        #endregion
+
+        #region Attachable Events
+        attachInteractor.selectEntered.AddListener(_ =>
+        {
+            Debug.Log(_.interactorObject.transform.name + " " + _.interactableObject.transform.name);
+
+            if (right_lastInteractedObject != null)
+            {
+                right_lastInteractedObject.GetComponent<AttachableObject>().OnAttach(_.interactorObject.transform.GetChild(0));
+            }
+
+            right_lastInteractedObject = null;
+        });
+
+        attachInteractor.selectExited.AddListener(_ =>
+        {
+            if (right_lastInteractedObject != null)
+            {
+                right_lastInteractedObject.GetComponent<AttachableObject>().OnDisattach();
+            }
+        });
+
+        attachInteractor.hoverEntered.AddListener(_ =>
+        {
+            if (right_lastInteractedObject != null)
+            {
+                right_lastInteractedObject.GetComponent<AttachableObject>().OnHoverEnter();
+            }
+        });
+
+        attachInteractor.hoverExited.AddListener(_ =>
+        {
+            if (right_lastInteractedObject != null)
+            {
+                right_lastInteractedObject.GetComponent<AttachableObject>().OnHoverExit();
+            }
         });
         #endregion
     }
@@ -134,8 +174,12 @@ public class VRRaycastInteraction : BaseRaycastInteraction
         Right_ChangeHandState(HandState.POINTING, right_blockChangeAnimation);
 
         right_lastInteractedObject.GetComponent<RaycastInteractable>().Cancel();
+
+        if (right_lastInteractedObject.GetComponent<RaycastInteractable>().GetInteractableType() != InteractableType.MagneticCard)
+        {
+            right_lastInteractedObject = null;
+        }
         
-        right_lastInteractedObject = null;
     }
 
     protected virtual void RightHand_IndexTriggerDown()
