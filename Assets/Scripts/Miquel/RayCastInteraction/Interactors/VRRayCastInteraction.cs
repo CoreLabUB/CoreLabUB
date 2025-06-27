@@ -99,7 +99,7 @@ public class VRRaycastInteraction : BaseRaycastInteraction
 
             if (right_lastInteractedObject != null)
             {
-                right_lastInteractedObject.GetComponent<AttachableObject>().OnAttach(_.interactorObject.transform.GetChild(0).position);
+                right_lastInteractedObject.GetComponent<AttachableObject>().OnAttach(_.interactorObject.transform.GetChild(0));
             }
 
             right_lastInteractedObject = null;

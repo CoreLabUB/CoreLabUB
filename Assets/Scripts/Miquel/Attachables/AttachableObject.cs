@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class AttachableObject : RaycastInteractable
 {
-    private Vector3 originPos;
+    private Transform originPos;
     private GameObject attachTransform;
 
     // Cancel() is called first then OnAttach, so this variable assures there is no teleportation
@@ -17,7 +18,7 @@ public class AttachableObject : RaycastInteractable
     private void Start()
     {
         attachTransform = transform.GetChild(0).gameObject;
-        originPos = attachTransform.transform.position;
+        originPos = attachTransform.transform;
     }
 
     public virtual void OnHoverEnter()
@@ -30,9 +31,12 @@ public class AttachableObject : RaycastInteractable
         isHovering = false;
     }
 
-    public virtual void OnAttach(Vector3 attachPosition)
+    public virtual void OnAttach(Transform attachPosition)
     {
         lockAttached = true;
+
+        GetComponent<XRGrabInteractable>().movementType = XRBaseInteractable.MovementType.Instantaneous;
+        GetComponent<XRGrabInteractable>().smoothPosition = false;
 
         isAttatch = true;
         Debug.Log(originPos + " "  + attachPosition);
@@ -45,6 +49,9 @@ public class AttachableObject : RaycastInteractable
 
     public virtual void OnDisattach()
     {
+        GetComponent<XRGrabInteractable>().movementType = XRBaseInteractable.MovementType.VelocityTracking;
+        GetComponent<XRGrabInteractable>().smoothPosition = true;
+
         isAttatch = false;
     }
 
@@ -58,6 +65,6 @@ public class AttachableObject : RaycastInteractable
     protected void ReturnToPreviousPosition()
     {
         Debug.Log("RETURN TO: " + originPos);
-        transform.position = originPos;
+        transform.position = originPos.position;
     }
 }
