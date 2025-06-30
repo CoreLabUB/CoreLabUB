@@ -97,7 +97,7 @@ public class VRRaycastInteraction : BaseRaycastInteraction
         {
             Debug.Log(_.interactorObject.transform.name + " " + _.interactableObject.transform.name);
 
-            if (right_lastInteractedObject != null)
+            if (right_lastInteractedObject != null && attachInteractor.GetComponent<AttachableInteractor>().AttachObject(_.interactableObject.transform.GetComponent<AttachableObject>()))
             {
                 right_lastInteractedObject.GetComponent<AttachableObject>().OnAttach(_.interactorObject.transform.GetChild(0));
             }
@@ -107,8 +107,9 @@ public class VRRaycastInteraction : BaseRaycastInteraction
 
         attachInteractor.selectExited.AddListener(_ =>
         {
-            if (right_lastInteractedObject != null)
+            if (right_lastInteractedObject != null && attachInteractor.GetComponent<AttachableInteractor>().IsOccupied())
             {
+                attachInteractor.GetComponent<AttachableInteractor>().DisattachObject();
                 right_lastInteractedObject.GetComponent<AttachableObject>().OnDisattach();
             }
         });
