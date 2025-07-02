@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 
 public enum StickState { GetSample, PutSample }
@@ -34,49 +35,83 @@ public class Stick : RaycastInteractable
 
         headAudio.Play();
         headAudio.Pause();
-    }
-    private void OnDrawGizmos()
-    {
-        Ray ray = new Ray(transform.position + headPosition, transform.forward);
-        Gizmos.color = Color.green;
-        Gizmos.DrawRay(ray);
-    }
 
-    public override void Drag()
-    {
-        if (!enableDetection) { return; }
-
-        Ray ray = new Ray(transform.position + headPosition, transform.forward);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, rayDistance, substanceLayer))
+        GetComponent<XRGrabInteractable>().hoverEntered.AddListener(_ =>
         {
-            RaycastTarget targetHit = hit.transform.GetComponent<RaycastTarget>();
+            HoverEnter(_.interactorObject.transform.gameObject);
+        });
 
-            if (previousTarget == null) // Initial Detection
-            { previousTarget = targetHit; }
+        GetComponent<XRGrabInteractable>().hoverExited.AddListener(_ =>
+        {
+            HoverExit(_.interactorObject.transform.gameObject);
+        });
 
-            if (previousTarget.GetId() != targetHit.GetId())
+        GetComponent<XRGrabInteractable>().selectEntered.AddListener(_ => 
+        {
+            StopAllCoroutines();
+
+            SelectEnter(_.interactorObject.transform.gameObject);
+
+            StartCoroutine(Grab());
+        });
+
+        GetComponent<XRGrabInteractable>().selectExited.AddListener(_ =>
+        {
+            StopAllCoroutines();
+
+            SelectExit(_.interactorObject.transform.gameObject);
+        });
+    }
+
+    public override void SelectEnter(GameObject hand)
+    {
+        base.SelectEnter(hand);
+    }
+
+    public override IEnumerator Grab()
+    {
+        if (!enableDetection) { yield return null; }
+
+        while(isDragging)
+        {
+            Ray ray = new Ray(transform.position + headPosition, transform.forward);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, rayDistance, substanceLayer))
             {
-                previousTarget.OnRaycastExit(gameObject);
-                previousTarget = targetHit;
+                RaycastTarget targetHit = hit.transform.GetComponent<RaycastTarget>();
+
+                if (previousTarget == null) // Initial Detection
+                { previousTarget = targetHit; }
+
+                if (previousTarget.GetId() != targetHit.GetId())
+                {
+                    previousTarget.OnRaycastExit(gameObject);
+                    previousTarget = targetHit;
+                }
+
+                targetHit.OnRaycastEnter(gameObject);
+
+                hasHit = true;
+            }
+            else
+            {
+                if (previousTarget != null)
+                {
+                    previousTarget.OnRaycastExit(gameObject);
+                }
             }
 
-            targetHit.OnRaycastEnter(gameObject);
-
-            hasHit = true;
+            yield return null;
         }
-        else
-        {
-            if (previousTarget == null)
-            { return; }
 
-            previousTarget.OnRaycastExit(gameObject);
-        }
+        yield return null;
     }
 
-    public override void Cancel()
+    public override void SelectExit(GameObject hand)
     {
+        base.SelectExit(hand);
+
         if (!hasHit) { return; }
 
         previousTarget.OnRaycastExit(gameObject);
@@ -87,14 +122,11 @@ public class Stick : RaycastInteractable
 
     public void ChangeHead(Material material)
     {
-        transform.GetComponent<Renderer>().materials[1] = material;
-
         List<Material> newMaterial = new List<Material>();
         newMaterial.Add(transform.GetComponent<Renderer>().materials[0]);
         newMaterial.Add(material);
 
-        transform.GetComponent<Renderer>().SetMaterials(newMaterial);
-        Debug.Log(transform.GetComponent<Renderer>().materials[1].ToString());
+        transform.GetComponent<Renderer>().SetSharedMaterials(newMaterial);
     }
 
     public void SetSubstance(BaseSubstance substanceFound)
@@ -121,8 +153,19 @@ public class Stick : RaycastInteractable
         return substance.GetSubstanceMaterial();
     }
 
+    private void OnDrawGizmos()
+    {
+        Ray ray = new Ray(transform.position + headPosition, transform.forward);
+        Gizmos.color = Color.green;
+        Gizmos.DrawRay(ray);
+    }
     public void OnDestroy()
     {
-        Cancel();
+        if (!hasHit) { return; }
+
+        previousTarget.OnRaycastExit(gameObject);
+        headAudio.Pause();
+
+        hasHit = false;
     }
 }
