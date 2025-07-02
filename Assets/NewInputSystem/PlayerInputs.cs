@@ -740,7 +740,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             ""id"": ""3c16b6c3-f96c-4548-8397-7b7b196c3af3"",
             ""actions"": [
                 {
-                    ""name"": ""Select"",
+                    ""name"": ""SelectEnter"",
                     ""type"": ""Button"",
                     ""id"": ""84609d96-6f32-4834-a5e5-071915efdae7"",
                     ""expectedControlType"": ""Button"",
@@ -749,7 +749,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Select Value"",
+                    ""name"": ""SelectEnter Value"",
                     ""type"": ""Value"",
                     ""id"": ""47ae1879-9356-4e27-8035-2ca716c6047b"",
                     ""expectedControlType"": ""Axis"",
@@ -820,7 +820,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Generic XR Controller"",
-                    ""action"": ""Select"",
+                    ""action"": ""SelectEnter"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -831,7 +831,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Generic XR Controller"",
-                    ""action"": ""Select"",
+                    ""action"": ""SelectEnter"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -842,7 +842,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Generic XR Controller"",
-                    ""action"": ""Select Value"",
+                    ""action"": ""SelectEnter Value"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -853,7 +853,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Generic XR Controller"",
-                    ""action"": ""Select Value"",
+                    ""action"": ""SelectEnter Value"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1288,7 +1288,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             ""id"": ""981b83d5-9f9d-4ba8-8efd-3cdcafed6ed5"",
             ""actions"": [
                 {
-                    ""name"": ""Select"",
+                    ""name"": ""SelectEnter"",
                     ""type"": ""Button"",
                     ""id"": ""fc80e1bd-bd81-4fbf-a7ba-8ac4c18643bd"",
                     ""expectedControlType"": ""Button"",
@@ -1297,7 +1297,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Select Value"",
+                    ""name"": ""SelectEnter Value"",
                     ""type"": ""Value"",
                     ""id"": ""a6cc4546-f981-4162-abcc-6efc7cff2074"",
                     ""expectedControlType"": ""Axis"",
@@ -1368,7 +1368,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Generic XR Controller"",
-                    ""action"": ""Select"",
+                    ""action"": ""SelectEnter"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1379,7 +1379,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Generic XR Controller"",
-                    ""action"": ""Select"",
+                    ""action"": ""SelectEnter"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1390,7 +1390,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Generic XR Controller"",
-                    ""action"": ""Select Value"",
+                    ""action"": ""SelectEnter Value"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1401,7 +1401,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Generic XR Controller"",
-                    ""action"": ""Select Value"",
+                    ""action"": ""SelectEnter Value"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1852,8 +1852,8 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_XRIUI_RightClick = m_XRIUI.FindAction("RightClick", throwIfNotFound: true);
         // XRI RightHand Interaction
         m_XRIRightHandInteraction = asset.FindActionMap("XRI RightHand Interaction", throwIfNotFound: true);
-        m_XRIRightHandInteraction_Select = m_XRIRightHandInteraction.FindAction("Select", throwIfNotFound: true);
-        m_XRIRightHandInteraction_SelectValue = m_XRIRightHandInteraction.FindAction("Select Value", throwIfNotFound: true);
+        m_XRIRightHandInteraction_Select = m_XRIRightHandInteraction.FindAction("SelectEnter", throwIfNotFound: true);
+        m_XRIRightHandInteraction_SelectValue = m_XRIRightHandInteraction.FindAction("SelectEnter Value", throwIfNotFound: true);
         m_XRIRightHandInteraction_Activate = m_XRIRightHandInteraction.FindAction("Activate", throwIfNotFound: true);
         m_XRIRightHandInteraction_ActivateValue = m_XRIRightHandInteraction.FindAction("Activate Value", throwIfNotFound: true);
         m_XRIRightHandInteraction_UIPress = m_XRIRightHandInteraction.FindAction("UI Press", throwIfNotFound: true);
@@ -1876,8 +1876,8 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_XRIRightHand_ThumbStickClicked = m_XRIRightHand.FindAction("ThumbStickClicked", throwIfNotFound: true);
         // XRI LeftHand Interaction
         m_XRILeftHandInteraction = asset.FindActionMap("XRI LeftHand Interaction", throwIfNotFound: true);
-        m_XRILeftHandInteraction_Select = m_XRILeftHandInteraction.FindAction("Select", throwIfNotFound: true);
-        m_XRILeftHandInteraction_SelectValue = m_XRILeftHandInteraction.FindAction("Select Value", throwIfNotFound: true);
+        m_XRILeftHandInteraction_Select = m_XRILeftHandInteraction.FindAction("SelectEnter", throwIfNotFound: true);
+        m_XRILeftHandInteraction_SelectValue = m_XRILeftHandInteraction.FindAction("SelectEnter Value", throwIfNotFound: true);
         m_XRILeftHandInteraction_Activate = m_XRILeftHandInteraction.FindAction("Activate", throwIfNotFound: true);
         m_XRILeftHandInteraction_ActivateValue = m_XRILeftHandInteraction.FindAction("Activate Value", throwIfNotFound: true);
         m_XRILeftHandInteraction_UIPress = m_XRILeftHandInteraction.FindAction("UI Press", throwIfNotFound: true);

@@ -60,10 +60,7 @@ public class BaseSubstance : RaycastTarget
     {
         emitter.GetComponent<Stick>().ChangeHead(substanceMaterial);
         emitter.GetComponent<Stick>().SetSubstance(this);
-
-        VRRaycastInteraction.right_resetHandAnimation.Invoke();
-        VRRaycastInteraction.left_resetHandAnimation.Invoke();
-
+            
         Destroy(gameObject);
     }
 }

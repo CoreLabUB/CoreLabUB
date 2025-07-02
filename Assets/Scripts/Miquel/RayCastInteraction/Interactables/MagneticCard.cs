@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 
 // Permissions to access the Labs, order in which the labs are unlocked. switch order if needed
@@ -21,8 +22,6 @@ public class MagneticCard : AttachableObject
     {
         base.Awake();
 
-        //instance = this;
-
         // Set Interactable Type
         interactableType = InteractableType.MagneticCard;
 
@@ -34,14 +33,38 @@ public class MagneticCard : AttachableObject
 
         // Change bool to True to Change Card perms and Material
         AddPerms(initialCardPerm);
+
+
+        // Event Triggers
+        GetComponent<XRGrabInteractable>().hoverEntered.AddListener(_ => 
+        {
+            HoverEnter(_.interactorObject.transform.gameObject);
+        });
+
+        GetComponent<XRGrabInteractable>().hoverExited.AddListener(_ =>
+        {
+            HoverExit(_.interactorObject.transform.gameObject);
+        });
+
+        GetComponent<XRGrabInteractable>().selectEntered.AddListener(_ =>
+        {
+            SelectEnter(_.interactorObject.transform.gameObject);
+        });
+
+        GetComponent<XRGrabInteractable>().selectExited.AddListener(_ => 
+        { 
+            SelectExit(_.interactorObject.transform.gameObject);
+        });
+
+        
     }
 
-    public override void Grab()
+    public override void SelectEnter(GameObject interactor)
     {
         CardReader.toggleCardReaderRaycast.Invoke(true);
     }
 
-    public override void Cancel()
+    public override void SelectExit(GameObject interactor)
     {
         if (!isHovering && !isAttatch)
         {

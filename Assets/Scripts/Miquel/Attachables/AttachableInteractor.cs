@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class AttachableInteractor : MonoBehaviour
 {
@@ -9,30 +10,24 @@ public class AttachableInteractor : MonoBehaviour
 
     void Start()
     {
-        
+        GetComponent<XRSocketInteractor>().selectEntered.AddListener(_ =>
+        {
+            Debug.Log(_.interactorObject.transform.name + " " + _.interactableObject.transform.name);
+
+            if (!isOccupied) // MAYBE DELETE
+            {
+                _.interactableObject.transform.GetComponent<AttachableObject>().OnAttach(_.interactorObject.transform.GetChild(0));
+                isOccupied = true;
+            }
+        });
+
+        GetComponent<XRSocketInteractor>().selectExited.AddListener(_ =>
+        {
+            if (isOccupied)
+            {
+                _.interactableObject.transform.GetComponent<AttachableObject>().OnDisattach();
+                isOccupied = false;
+            }
+        });
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public bool AttachObject(AttachableObject attachObject)
-    {
-        if (isOccupied) { return false; }
-
-        isOccupied = true;
-        attachableObject = attachObject;
-
-        return true;
-    }
-
-    public void DisattachObject()
-    {
-        isOccupied = false;
-        attachableObject = null;
-    }
-
-    public bool IsOccupied() { return isOccupied; }
 }

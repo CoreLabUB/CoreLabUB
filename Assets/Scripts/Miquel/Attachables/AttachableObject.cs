@@ -21,13 +21,15 @@ public class AttachableObject : RaycastInteractable
         originPos = attachTransform.transform;
     }
 
-    public virtual void OnHoverEnter()
+    public override void HoverEnter(GameObject interactor)
     {
+        base.HoverEnter(interactor);
         isHovering = true;
     }
 
-    public virtual void OnHoverExit()
+    public override void HoverExit(GameObject interactor)
     {
+        base.HoverExit(interactor);
         isHovering = false;
     }
 
@@ -55,7 +57,7 @@ public class AttachableObject : RaycastInteractable
         isAttatch = false;
     }
 
-    public override void Cancel()
+    public override void SelectExit(GameObject interactor)
     {
         if (lockAttached == false) { return; }
 
