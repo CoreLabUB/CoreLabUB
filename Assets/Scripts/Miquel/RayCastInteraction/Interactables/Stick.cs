@@ -156,7 +156,7 @@ public class Stick : RaycastInteractable
     private void OnDrawGizmos()
     {
         Ray ray = new Ray(transform.position + headPosition, transform.forward);
-        Gizmos.color = Color.green;
+        Gizmos.color = Color.blue;
         Gizmos.DrawRay(ray);
     }
     public void OnDestroy()

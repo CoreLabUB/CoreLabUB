@@ -75,6 +75,13 @@ public class MagneticCard : AttachableObject
         CardReader.toggleCardReaderRaycast.Invoke(false);
     }
 
+    public override void OnAttach(Transform attachPosition)
+    {
+        base.OnAttach(attachPosition);
+
+        PopupsManager.Instance.ClosePopup(0); // TEMP
+    }
+
     public bool CheckPerm(CardPerms cardPerm)
     {
         return cardPerms[cardPerm];
