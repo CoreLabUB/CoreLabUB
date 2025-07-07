@@ -12803,10 +12803,10 @@ RectTransform:
   m_Father: {fileID: 1609320341}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 498.23, y: -130.005}
+  m_SizeDelta: {x: 916.46, y: 180.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &457051437
 MonoBehaviour:
@@ -16594,10 +16594,6 @@ PrefabInstance:
     - target: {fileID: 78251358889337623, guid: b550ce7b00d4f1943b8cda32e18771aa, type: 3}
       propertyPath: m_Name
       value: VR Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7554772131918964608, guid: b550ce7b00d4f1943b8cda32e18771aa, type: 3}
-      propertyPath: m_Layer
-      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8609395538123046871, guid: b550ce7b00d4f1943b8cda32e18771aa, type: 3}
       propertyPath: m_RootOrder
@@ -39833,7 +39829,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1609320341
 RectTransform:
   m_ObjectHideFlags: 0
@@ -39853,7 +39849,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 996.46, y: 260.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1609320342
 MonoBehaviour:
@@ -44103,6 +44099,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5e4d54cd504cd84f91f9de338d827b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeLanguage: 0
 --- !u!4 &1767038780
 Transform:
   m_ObjectHideFlags: 0

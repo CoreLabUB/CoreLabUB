@@ -8,9 +8,15 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/TestingScenes/TestMenu.unity
     guid: c4fab1f68aa4775478a58c1e3ea1aa07
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LabGodScene.unity
     guid: a3498e8ecc5deff41b034ccaf6447f9c
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 8d4e9484de3be7546bb83492039514c6
+  - enabled: 1
+    path: Assets/Scenes/Lab Miki V2.unity
+    guid: 790cdc52f6492834ca66aaeea0761e91
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260, type: 2}
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: dc5a169419fa04987b057f65238cf3ba, type: 2}

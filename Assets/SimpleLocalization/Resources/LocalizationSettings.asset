@@ -17,4 +17,7 @@ MonoBehaviour:
   - Name: Popups
     Id: 0
     TextAsset: {fileID: 4900000, guid: 9323c86e31aff9f4e968ba63632063a4, type: 3}
+  - Name: MainMenu
+    Id: 426327815
+    TextAsset: {fileID: 4900000, guid: dd9bc9867b06eb841ae6b05a27601bd9, type: 3}
   SaveFolder: {fileID: 102900000, guid: c392831e85f928548b8494fefd912562, type: 3}
