@@ -999,7 +999,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: In Collaboration With
+  m_text: En colabo In Collaboration With
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea9be01ed73d424429ad5351a07be811, type: 2}
   m_sharedMaterial: {fileID: 5364256343010367851, guid: ea9be01ed73d424429ad5351a07be811, type: 2}
@@ -2461,7 +2461,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Made by
+  m_text: FetPer Made by
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea9be01ed73d424429ad5351a07be811, type: 2}
   m_sharedMaterial: {fileID: 5364256343010367851, guid: ea9be01ed73d424429ad5351a07be811, type: 2}

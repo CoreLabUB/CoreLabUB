@@ -18,11 +18,13 @@ public class MainMenuUI : MonoBehaviour
     {
         SetPlayButton();
         SetCredits();
+        SetCollaboration();
     }
 
     private void SetCredits()
     {
         transform.GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = creditsNames.text;
+        transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = LocalizationManager.Localize("MadeBy");
     }
 
     private void SetPlayButton()
@@ -33,4 +35,9 @@ public class MainMenuUI : MonoBehaviour
             SceneManager.LoadScene(sceneToPlay);
         });
     }
+
+    private void SetCollaboration()
+    {
+        transform.GetChild(2).GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = LocalizationManager.Localize("InCollaboration");   
+    }    
 }
