@@ -5,6 +5,8 @@ using UnityEngine;
 public enum SubstanceType { NULL, Pollen, Wine, Grass }
 public class BaseSubstance : RaycastTarget
 {
+    // Add this Script and select the substanceType, it will automatically switch to the chosen substanceClass 
+
     [SerializeField] protected SubstanceType substanceType;
 
     protected Material substanceMaterial;
@@ -15,7 +17,6 @@ public class BaseSubstance : RaycastTarget
 
         switch (substanceType)
         {
-            
             case SubstanceType.Pollen:
             {
                 transform.AddComponent<Pollen>().ApplyMaterial(substanceType);

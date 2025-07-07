@@ -15,24 +15,24 @@ public class RaycastInteractable : MonoBehaviour
         gameObject.layer = 9; // RaycastInteractable
     }
 
-    public virtual void Activate(GameObject interactor) // BOTH Trigger Down
+    public virtual void Activate(GameObject interactor) // BOTH Triggers Down
     {
-        ChangeHandState(interactor, HandState.INTERACT, false);
+        ChangeHandState(interactor, HandState.INTERACT);
     }
 
-    public virtual void Deactivate(GameObject interactor) // BOTH Trigger Up
+    public virtual void Deactivate(GameObject interactor) // BOTH Triggers Up
     {
-        ChangeHandState(interactor, HandState.IDLE, false);
+        ChangeHandState(interactor, HandState.IDLE);
     }
 
     public virtual void HoverEnter(GameObject interactor)
     {
-        ChangeHandState(interactor, HandState.POINTING, false);
+        ChangeHandState(interactor, HandState.POINTING);
     }
 
     public virtual void HoverExit(GameObject interactor)
     {
-        ChangeHandState(interactor, HandState.IDLE, false);
+        ChangeHandState(interactor, HandState.IDLE);
     }
 
     public virtual void SelectEnter(GameObject interactor) // Hand Trigger Down
@@ -61,10 +61,9 @@ public class RaycastInteractable : MonoBehaviour
         
     }
 
-    public void ChangeHandState(GameObject interactor, HandState state, bool blockAnimation)
+    public void ChangeHandState(GameObject interactor, HandState state)
     {
-        Debug.Log(interactor.name);
-        interactor.transform.parent.GetComponent<Hand>().ChangeHandState(state, blockAnimation);
+        interactor.transform.parent.GetComponent<Hand>().ChangeHandState(state);
     }
 
     public InteractableType GetInteractableType()

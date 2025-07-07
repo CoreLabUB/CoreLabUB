@@ -37,11 +37,11 @@ public class AttachableObject : RaycastInteractable
     {
         lockAttached = true;
 
+        // Changes MovementType to seem the card is attached
         GetComponent<XRGrabInteractable>().movementType = XRBaseInteractable.MovementType.Instantaneous;
         GetComponent<XRGrabInteractable>().smoothPosition = false;
 
         isAttatch = true;
-        Debug.Log(originPos + " "  + attachPosition);
         originPos = attachPosition;
 
         ReturnToPreviousPosition();
@@ -51,6 +51,7 @@ public class AttachableObject : RaycastInteractable
 
     public virtual void OnDisattach()
     {
+        // Changes MovementType to simulate physics
         GetComponent<XRGrabInteractable>().movementType = XRBaseInteractable.MovementType.VelocityTracking;
         GetComponent<XRGrabInteractable>().smoothPosition = true;
 
@@ -66,7 +67,6 @@ public class AttachableObject : RaycastInteractable
 
     protected void ReturnToPreviousPosition()
     {
-        Debug.Log("RETURN TO: " + originPos);
         transform.position = originPos.position;
     }
 }

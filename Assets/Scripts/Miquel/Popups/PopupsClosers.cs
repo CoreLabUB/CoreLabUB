@@ -8,11 +8,11 @@ public class PopupsClosers : PopupsRaycast
     {
         RaycastHit hit;
 
+        // If raycast does not collide with player, returns. the player object has the layer Player
         if (!Physics.Raycast(ray, out hit, rayDistance, interactableLayerMask))
         { return; }
 
         PopupsManager.Instance.ClosePopup(popupId);
-
 
         Destroy(gameObject);
     }

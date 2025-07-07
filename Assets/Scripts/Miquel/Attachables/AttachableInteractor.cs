@@ -12,8 +12,6 @@ public class AttachableInteractor : MonoBehaviour
     {
         GetComponent<XRSocketInteractor>().selectEntered.AddListener(_ =>
         {
-            Debug.Log(_.interactorObject.transform.name + " " + _.interactableObject.transform.name);
-
             if (!isOccupied) // MAYBE DELETE
             {
                 _.interactableObject.transform.GetComponent<AttachableObject>().OnAttach(_.interactorObject.transform.GetChild(0));

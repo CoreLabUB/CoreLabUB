@@ -25,11 +25,11 @@ public class SubstanceSample : RaycastTarget
     {
         if (hasSubstance) { return; }
 
+        // Returns if Stick doesnot have a sample
         if (emitter.GetComponent<Stick>().GetState() == StickState.GetSample) { return; }
 
         InsertSubstance(emitter.GetComponent<Stick>().GetSubstanceMaterial(), emitter.GetComponent<Stick>().GetSubstance().GetSubstanceType());
         hasSubstance = true;
-
         
         Destroy(emitter);
     }

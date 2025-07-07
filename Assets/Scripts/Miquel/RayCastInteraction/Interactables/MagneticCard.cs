@@ -25,7 +25,7 @@ public class MagneticCard : AttachableObject
         // Set Interactable Type
         interactableType = InteractableType.MagneticCard;
 
-        // Adding Card Perms 
+        // Adding Default Card Perms 
         cardPerms.Add(CardPerms.Archeolab, true);
         cardPerms.Add(CardPerms.Biolab, false);
         cardPerms.Add(CardPerms.Geolab, false);
@@ -36,6 +36,7 @@ public class MagneticCard : AttachableObject
 
 
         // Event Triggers
+        #region XR GRAB INTERACTABLE EVENTS
         GetComponent<XRGrabInteractable>().hoverEntered.AddListener(_ => 
         {
             HoverEnter(_.interactorObject.transform.gameObject);
@@ -55,8 +56,8 @@ public class MagneticCard : AttachableObject
         { 
             SelectExit(_.interactorObject.transform.gameObject);
         });
+        #endregion
 
-        
     }
 
     public override void SelectEnter(GameObject interactor)
@@ -68,10 +69,10 @@ public class MagneticCard : AttachableObject
     {
         if (!isHovering && !isAttatch)
         {
-            Debug.Log("ENTERED CANCEL CARD");
             ReturnToPreviousPosition();
         }
 
+        // Deactivate All Cardreaders
         CardReader.toggleCardReaderRaycast.Invoke(false);
     }
 
@@ -79,6 +80,7 @@ public class MagneticCard : AttachableObject
     {
         base.OnAttach(attachPosition);
 
+        // This closes first popup
         PopupsManager.Instance.ClosePopup(0); // TEMP
     }
 
@@ -102,6 +104,7 @@ public class MagneticCard : AttachableObject
     {
         CardPerms highestCardPerm = CardPerms.Archeolab;
 
+        // Finds the Highest card level
         foreach (var perm in cardPerms)
         {
             if (perm.Value)

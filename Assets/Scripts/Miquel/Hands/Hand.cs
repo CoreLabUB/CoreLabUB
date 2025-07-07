@@ -11,10 +11,11 @@ public class Hand : MonoBehaviour
     [SerializeField] Animator handAnimation;
     [SerializeField] string handName;
 
-
-    public virtual void ChangeHandState(HandState newHandState, bool blockAnimation)
+    // This Changes the hands' animations. From Idle To Pointing, and from Pointing to Interact or Grabbing
+    public virtual void ChangeHandState(HandState newHandState)
     {
-        if (currentHandState == newHandState || blockAnimation) { return; }
+        // If the hand state is the same as the previous hand, return
+        if (currentHandState == newHandState) { return; }
 
         switch (newHandState)
         {

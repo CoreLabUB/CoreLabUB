@@ -36,6 +36,8 @@ public class Stick : RaycastInteractable
         headAudio.Play();
         headAudio.Pause();
 
+        // Events Triggers
+        #region XR GRAB INTERACTABLE EVENTS
         GetComponent<XRGrabInteractable>().hoverEntered.AddListener(_ =>
         {
             HoverEnter(_.interactorObject.transform.gameObject);
@@ -61,6 +63,7 @@ public class Stick : RaycastInteractable
 
             SelectExit(_.interactorObject.transform.gameObject);
         });
+        #endregion
     }
 
     public override void SelectEnter(GameObject hand)
@@ -70,6 +73,7 @@ public class Stick : RaycastInteractable
 
     public override IEnumerator Grab()
     {
+        // Performance Optimization
         if (!enableDetection) { yield return null; }
 
         while(isDragging)
@@ -84,6 +88,7 @@ public class Stick : RaycastInteractable
                 if (previousTarget == null) // Initial Detection
                 { previousTarget = targetHit; }
 
+                // Check if the targetHit is different from previousTarget to call previousTarget's OnRaycastExit
                 if (previousTarget.GetId() != targetHit.GetId())
                 {
                     previousTarget.OnRaycastExit(gameObject);
@@ -112,6 +117,7 @@ public class Stick : RaycastInteractable
     {
         base.SelectExit(hand);
 
+        // Performance Optimization
         if (!hasHit) { return; }
 
         previousTarget.OnRaycastExit(gameObject);
@@ -129,6 +135,7 @@ public class Stick : RaycastInteractable
         transform.GetComponent<Renderer>().SetSharedMaterials(newMaterial);
     }
 
+    // Sets substance for future operations
     public void SetSubstance(BaseSubstance substanceFound)
     {
         substance = substanceFound;

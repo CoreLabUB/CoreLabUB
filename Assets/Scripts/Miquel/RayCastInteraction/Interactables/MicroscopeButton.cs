@@ -26,6 +26,7 @@ public class MicroscopeButton : RaycastInteractable
         });
     }
 
+    // Opens / Closes SEM Door
     public override void Activate(GameObject interactor)
     {
         microscopeDoor.ToggleDoor();
@@ -34,11 +35,6 @@ public class MicroscopeButton : RaycastInteractable
         {
             microscopeDetection.Detect();
         }
-    }
-
-    public override void Deactivate(GameObject interactor)
-    {
-        Debug.Log("DEACTIVATE");
     }
 
     public bool GetDoorOpen()
