@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 06ff98b7b80c0e94c8293b109cdaa790
+guid: 9b72a7730a01a7a4aa0c9a17f064c08a
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,15 +7,10 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Ladrillos
-    second: {fileID: 2100000, guid: aebe93966bf343747a0609ed48dcd4df, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: paredInterna
-    second: {fileID: 2100000, guid: f704fd297be82bb40955be523b44c096, type: 2}
+      name: No Name
+    second: {fileID: 2100000, guid: 69f08c0c429c0754bb7b952321292516, type: 2}
   materials:
-    materialImportMode: 2
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
