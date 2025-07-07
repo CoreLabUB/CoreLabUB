@@ -423,7 +423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   creditsNames: {fileID: 4900000, guid: d5b7e2bec461ef4439f1b6ed3b2c12b5, type: 3}
-  sceneToPlay: Lab Miki V2
+  sceneToPlay: LabGodScene
 --- !u!1 &538504494
 GameObject:
   m_ObjectHideFlags: 0
