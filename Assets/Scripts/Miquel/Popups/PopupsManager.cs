@@ -11,18 +11,22 @@ public enum Language { Catalan, Spanish, English }
 
 public class PopupsManager : Singleton<PopupsManager>
 {
-    [SerializeField] Language activeLanguage;
+    [SerializeField] private bool enableDebug = false;
+    [SerializeField] private Language DEBUG_activeLanguage;
 
     private int currentPopupId = 0;
     private TMP_Text popupText;
 
-    Dictionary<int, string> localizationKeys = new();
+    private Dictionary<int, string> localizationKeys = new();
 
     void Start()
     {
-        LocalizationManager.Read();
-        LocalizationManager.Language = activeLanguage.ToString();
+        //LocalizationManager.Read();
+        if (enableDebug)
+        { LocalizationManager.Language = DEBUG_activeLanguage.ToString(); }
+        
 
+        // Get ALL spreadsheet Keys
         var temp = LocalizationManager.Dictionary;
         int count = 0;
         foreach ( var key in temp.Values )
@@ -39,8 +43,11 @@ public class PopupsManager : Singleton<PopupsManager>
 
     public void CreatePopup(int id, Vector3 pos, Quaternion rot)
     {
-        Debug.Log("CREATE | CURRENT ID: " + currentPopupId + " ID PARAMETER: " + id);
+        if (enableDebug)
+        { Debug.Log("CREATE | CURRENT ID: " + currentPopupId + " ID PARAMETER: " + id); }
 
+        // Checks if the popup to create is the correct one, this prevents the creation of future popups.
+        // If the player has not grabbed the Card, and walks down the hallway, the next popup will not appear
         if (currentPopupId != id) { return; }
        
         popupText.transform.parent.gameObject.SetActive(true);
@@ -50,8 +57,10 @@ public class PopupsManager : Singleton<PopupsManager>
 
     public void ClosePopup(int id)
     {
-        Debug.Log("CLOSE | CURRENT ID: " + currentPopupId + " ID PARAMETER: " + id);
+        if (enableDebug)
+        { Debug.Log("CLOSE | CURRENT ID: " + currentPopupId + " ID PARAMETER: " + id); }
 
+        // Checks if the popup to close is the correct one, this prevents the closure of future popups.
         if (currentPopupId != id) { return;}
 
         popupText.transform.parent.gameObject.SetActive(false);

@@ -32,11 +32,12 @@ public class CardReader : MonoBehaviour
 
     private void Awake()
     {
+        // This activates or deactivates the raycasts for all CardReaders. This is a performance optimization
         toggleCardReaderRaycast.AddListener((bool state) => 
         {
             raycastsActive = state;
         });
-
+        // This does the same as the previous one but to a single CardReader
         toggleSingleCardReaderRaycast.AddListener((CardPerms cardPerms, bool state) =>
         {
             if (cardPerms != labPerm || raycastsActive)
@@ -45,12 +46,11 @@ public class CardReader : MonoBehaviour
             raycastsActive = state;
         });
 
+        // Adds or substracts 1/4 of this gameObject size to the position to space out the raycast for better precision
         raycastOffsets = new Vector3(0,transform.localScale.y/4, 0);
 
         rayTop = new Ray(transform.position + raycastOffsets, transform.forward);
         rayBot = new Ray(transform.position - raycastOffsets, transform.forward);
-
-        door.SetCardPerms(labPerm);
     }
     private void OnDrawGizmos()
     {
@@ -65,7 +65,7 @@ public class CardReader : MonoBehaviour
         RaycastHit hitTop;
         RaycastHit hitBot;
 
-        // Tow Raycast for better precission
+        // Both raycasts must collide with the card to continue
         if (!Physics.Raycast(rayTop, out hitTop, rayDistance , interactableLayerMask))
         { return; }
 
@@ -74,8 +74,10 @@ public class CardReader : MonoBehaviour
 
         GameObject detectedObject = hitTop.transform.gameObject;
 
+        // Check if the Interactable Object is a card
         if (detectedObject.GetComponent<RaycastInteractable>().GetInteractableType() == InteractableType.MagneticCard)
         {
+            // Check if the card has this lab permissions
             if (detectedObject.GetComponent<MagneticCard>().CheckPerm(labPerm))
             {
                 // Play Confirmation Sound, Card Reader Panel Blinks Green Light
@@ -84,8 +86,6 @@ public class CardReader : MonoBehaviour
 
                 AudioManager.Instance.PlaySoundAt("CardReaderConfirmation", transform.position);
 
-                // Prevent animation stuck with true
-                //door.SetDoor(false);
                 door.SetDoor(true);
             }
             else
@@ -132,6 +132,7 @@ public class CardReader : MonoBehaviour
         raycastsActive = true;
     }
 
+    // This function changes the icon's color on the CardReader
     private void ChangeEmissionColor(Color color)
     {
         transform.parent.GetComponent<Renderer>().material.SetColor("_EmissionColor", color);

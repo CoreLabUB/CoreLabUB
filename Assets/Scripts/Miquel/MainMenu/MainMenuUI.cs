@@ -12,7 +12,7 @@ public class MainMenuUI : MonoBehaviour
 {
     [SerializeField] private TextAsset creditsNames;
 
-    [SerializeField] string sceneToPlay;
+    [SerializeField] private string sceneToPlay;
 
     void Awake()
     {

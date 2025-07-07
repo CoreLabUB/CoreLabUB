@@ -9,6 +9,8 @@ public class RaycastTarget : MonoBehaviour
     protected virtual void Awake()
     {
         gameObject.layer = 10; // SubstanceInteractable
+
+        // Registers this RaycasTarget to RaycastTargetManager
         RaycastTargetManager.Instance.AddRaycastTarget(this);
     }
 
