@@ -31,39 +31,10 @@ public class Stick : RaycastInteractable
         base.Awake();
         interactableType = InteractableType.Stick;
 
-        headAudio = transform.GetChild(0).gameObject.GetComponent<AudioSource>();
+        headAudio = transform.GetChild(1).gameObject.GetComponent<AudioSource>();
 
         headAudio.Play();
         headAudio.Pause();
-
-        // Events Triggers
-        #region XR GRAB INTERACTABLE EVENTS
-        GetComponent<XRGrabInteractable>().hoverEntered.AddListener(_ =>
-        {
-            HoverEnter(_.interactorObject.transform.gameObject);
-        });
-
-        GetComponent<XRGrabInteractable>().hoverExited.AddListener(_ =>
-        {
-            HoverExit(_.interactorObject.transform.gameObject);
-        });
-
-        GetComponent<XRGrabInteractable>().selectEntered.AddListener(_ => 
-        {
-            StopAllCoroutines();
-
-            SelectEnter(_.interactorObject.transform.gameObject);
-
-            StartCoroutine(Grab());
-        });
-
-        GetComponent<XRGrabInteractable>().selectExited.AddListener(_ =>
-        {
-            StopAllCoroutines();
-
-            SelectExit(_.interactorObject.transform.gameObject);
-        });
-        #endregion
     }
 
     public override void SelectEnter(GameObject hand)
@@ -128,11 +99,8 @@ public class Stick : RaycastInteractable
 
     public void ChangeHead(Material material)
     {
-        List<Material> newMaterial = new List<Material>();
-        newMaterial.Add(transform.GetComponent<Renderer>().materials[0]);
-        newMaterial.Add(material);
 
-        transform.GetComponent<Renderer>().SetSharedMaterials(newMaterial);
+        transform.GetChild(0).GetComponent<Renderer>().material = material;
     }
 
     // Sets substance for future operations

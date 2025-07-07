@@ -8,7 +8,7 @@ public class AttachableInteractor : MonoBehaviour
     private bool isOccupied;
     private AttachableObject attachableObject;
 
-    void Start()
+    void Awake()
     {
         GetComponent<XRSocketInteractor>().selectEntered.AddListener(_ =>
         {

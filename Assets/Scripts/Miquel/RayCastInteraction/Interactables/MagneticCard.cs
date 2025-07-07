@@ -8,9 +8,6 @@ public enum CardPerms { Archeolab = 0, Biolab = 1, Geolab = 2, Nanolab = 3 }
 
 public class MagneticCard : AttachableObject
 {
-    //private static MagneticCard instance;
-    //public static MagneticCard Instance { get { if (instance == null) { instance = new MagneticCard(); } return instance;  } }
-
     [SerializeField] CardPerms initialCardPerm;
 
     Dictionary<CardPerms, bool> cardPerms = new Dictionary<CardPerms, bool>();
@@ -33,31 +30,6 @@ public class MagneticCard : AttachableObject
 
         // Change bool to True to Change Card perms and Material
         AddPerms(initialCardPerm);
-
-
-        // Event Triggers
-        #region XR GRAB INTERACTABLE EVENTS
-        GetComponent<XRGrabInteractable>().hoverEntered.AddListener(_ => 
-        {
-            HoverEnter(_.interactorObject.transform.gameObject);
-        });
-
-        GetComponent<XRGrabInteractable>().hoverExited.AddListener(_ =>
-        {
-            HoverExit(_.interactorObject.transform.gameObject);
-        });
-
-        GetComponent<XRGrabInteractable>().selectEntered.AddListener(_ =>
-        {
-            SelectEnter(_.interactorObject.transform.gameObject);
-        });
-
-        GetComponent<XRGrabInteractable>().selectExited.AddListener(_ => 
-        { 
-            SelectExit(_.interactorObject.transform.gameObject);
-        });
-        #endregion
-
     }
 
     public override void SelectEnter(GameObject interactor)
@@ -67,7 +39,7 @@ public class MagneticCard : AttachableObject
 
     public override void SelectExit(GameObject interactor)
     {
-        if (!isHovering && !isAttatch)
+        if (!isAttatch)
         {
             ReturnToPreviousPosition();
         }
