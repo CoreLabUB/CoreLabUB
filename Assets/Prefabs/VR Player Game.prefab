@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8609395538123046871}
   m_Layer: 0
-  m_Name: VR Player
+  m_Name: VR Player Game
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   - {fileID: 1749801130647175212}
   - {fileID: 7554772131918964611}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &109311767317156394
 GameObject:
@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 1909346224167756054}
   - component: {fileID: 3167301665050952088}
   - component: {fileID: 339873290501562082}
-  - component: {fileID: 7377218153551713384}
+  - component: {fileID: 4220855125750124770}
   m_Layer: 0
   m_Name: AttachableBelt
   m_TagString: Untagged
@@ -365,7 +365,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7377218153551713384
+--- !u!114 &4220855125750124770
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -374,9 +374,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 892498172255605978}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfe5feb6e352ab94cb720ee23409cbd4, type: 3}
+  m_Script: {fileID: 11500000, guid: 9af279f6e857ed7459484d9497b8841c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCamera: {fileID: 9151481191253196508}
 --- !u!1 &1407441423809216847
 GameObject:
   m_ObjectHideFlags: 0
@@ -1283,8 +1284,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2941009170486769939}
-  - component: {fileID: 7084877484959296922}
-  - component: {fileID: 894807227145318835}
   m_Layer: 2
   m_Name: AttachableBeltPivot
   m_TagString: Untagged
@@ -1308,32 +1307,6 @@ Transform:
   m_Father: {fileID: 9151481191301374718}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7084877484959296922
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3688361165682477454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9af279f6e857ed7459484d9497b8841c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerCamera: {fileID: 9151481191253196508}
---- !u!114 &894807227145318835
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3688361165682477454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9af279f6e857ed7459484d9497b8841c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerCamera: {fileID: 9151481191253196508}
 --- !u!1 &4130280409266786746
 GameObject:
   m_ObjectHideFlags: 0
@@ -3069,6 +3042,22 @@ PrefabInstance:
     - target: {fileID: 1680501587, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.36144
+      objectReference: {fileID: 0}
+    - target: {fileID: 1767192439, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_ClearFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1767192439, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1767192439, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1767192439, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19064736505062540, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_UseForceGrab

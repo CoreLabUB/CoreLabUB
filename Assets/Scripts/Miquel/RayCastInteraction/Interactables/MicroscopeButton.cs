@@ -11,18 +11,16 @@ public class MicroscopeButton : RaycastInteractable
 
     protected override void Awake()
     {
-        base.Awake();
+        gameObject.layer = 9; // RaycastInteractable
 
         GetComponent<XRSimpleInteractable>().activated.AddListener(_ =>
         {
             Activate(_.interactorObject.transform.gameObject);
-            
         });
 
         GetComponent<XRSimpleInteractable>().deactivated.AddListener(_ =>
         {
             Deactivate(_.interactorObject.transform.gameObject);
-            
         });
     }
 

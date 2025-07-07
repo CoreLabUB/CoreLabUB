@@ -38,6 +38,8 @@ public class MainMenuUI : MonoBehaviour
 
     private void SetCollaboration()
     {
+        transform.GetChild(2).GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = LocalizationManager.Localize("AProjectOf");   
         transform.GetChild(2).GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = LocalizationManager.Localize("InCollaboration");   
+        transform.GetChild(2).GetChild(0).GetChild(2).GetComponent<TMP_Text>().text = LocalizationManager.Localize("SpecialThanks");   
     }    
 }

@@ -12,7 +12,6 @@ public class AttachableObject : RaycastInteractable
     // Cancel() is called first then OnAttach, so this variable assures there is no teleportation
     bool lockAttached = false;
 
-    protected bool isHovering = false;
     protected bool isAttatch = false;
 
     private void Start()
@@ -24,13 +23,11 @@ public class AttachableObject : RaycastInteractable
     public override void HoverEnter(GameObject interactor)
     {
         base.HoverEnter(interactor);
-        isHovering = true;
     }
 
     public override void HoverExit(GameObject interactor)
     {
         base.HoverExit(interactor);
-        isHovering = false;
     }
 
     public virtual void OnAttach(Transform attachPosition)
