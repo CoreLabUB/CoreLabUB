@@ -17,7 +17,6 @@ public class PopupDetectors : PopupsRaycast
         // Creates a Popup at the Child position and rotation
         PopupsManager.Instance.CreatePopup(popupId, child.position, child.rotation);
 
-
-        Destroy(gameObject);
+        DestroyOnTrigger();
     }
 }

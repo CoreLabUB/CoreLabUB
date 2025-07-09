@@ -14,6 +14,6 @@ public class PopupsClosers : PopupsRaycast
 
         PopupsManager.Instance.ClosePopup(popupId);
 
-        Destroy(gameObject);
+        DestroyOnTrigger();
     }
 }
