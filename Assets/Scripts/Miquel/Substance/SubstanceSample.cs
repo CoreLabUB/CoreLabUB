@@ -1,23 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager.UI;
 using UnityEngine;
 
 public class SubstanceSample : RaycastTarget
 {
     private bool hasSubstance = false;
-    private GameObject sample;
     private SubstanceType substanceType;
 
     protected override void Awake()
     {
         base.Awake();
-        sample = transform.GetChild(0).GetChild(0).gameObject;
     }
 
     private void InsertSubstance(Material sampleMaterial, SubstanceType substance)
     {
-        sample.SetActive(true);
-        sample.GetComponent<Renderer>().material = sampleMaterial;
+        GameObject sample = transform.GetChild(0).gameObject;
+        for (int i = 0; i<3; i++)
+        {
+            sample.transform.GetChild(i).gameObject.SetActive(true);
+            sample.transform.GetChild(i).GetComponent<Renderer>().material = sampleMaterial;
+        }
         substanceType = substance;
     }
 
