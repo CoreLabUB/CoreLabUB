@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PopupsClosers : PopupsRaycast
 {
-    void Update()
+    private void Update()
     {
         RaycastHit hit;
 

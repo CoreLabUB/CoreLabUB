@@ -8,9 +8,9 @@ using UnityEngine.UI;
 
 public class ChangeLanguageExample : MonoBehaviour
 {
-    [SerializeField] GameObject languagePrefab;
-    List<string> languages = new List<string>();
-    void Start()
+    [SerializeField] private GameObject languagePrefab;
+    private List<string> languages = new List<string>();
+    private void Start()
     {
         // Read Spreadsheet
         LocalizationManager.Read();

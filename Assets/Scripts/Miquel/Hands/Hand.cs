@@ -4,9 +4,9 @@ using UnityEngine;
 public enum HandState { IDLE = 0, POINTING = 1, GRABBING = 2, INTERACT = 3 }
 public class Hand : MonoBehaviour
 {
-    HandState currentHandState;
-    [SerializeField] Animator handAnimation;
-    [SerializeField] string handName;
+    private HandState currentHandState;
+    [SerializeField] private Animator handAnimation;
+    [SerializeField] private string handName;
 
     // This Changes the hands' animations. From Idle To Pointing, and from Pointing to Interact or Grabbing
     public virtual void ChangeHandState(HandState newHandState)
@@ -47,6 +47,5 @@ public class Hand : MonoBehaviour
             }
         }
         currentHandState = newHandState;
-
     }
 }

@@ -14,7 +14,7 @@ public class PopupsRaycast : MonoBehaviour
 
     [SerializeField] bool destroyOnTrigger = true;
 
-    void Start()
+    private void Start()
     {
         ray = new Ray(transform.position, transform.forward);
     }

@@ -6,11 +6,11 @@ using UnityEngine;
 
 public class GetAllKeysExample : MonoBehaviour
 {
-    [SerializeField] GameObject textPrefab;
+    [SerializeField] private GameObject textPrefab;
 
-    Dictionary<int, string> localizationKeys = new();
+    private Dictionary<int, string> localizationKeys = new();
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         LocalizationManager.Read();
         LocalizationManager.AutoLanguage();

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class DoorActivateCardReader : MonoBehaviour
 {
-    // This class is for when animation ends to Trigger ActivateCardReader
-
+    // This function is called when the door animation ends
+    // Even if there is no reference in code, its used, check door animations' events
     public void ActivateCardReader()
     {
         CardReader.toggleCardReaderRaycast.Invoke(true);

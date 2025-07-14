@@ -10,12 +10,11 @@ public enum StickState { GetSample, PutSample }
 public class Stick : RaycastInteractable
 {
     private bool enableDetection = true;
-    private bool hasSubstance = false;
     private bool hasHit = false;
 
-    StickState stickState = StickState.GetSample;
+    private StickState stickState = StickState.GetSample;
 
-    RaycastTarget previousTarget;
+    private RaycastTarget previousTarget;
 
     private BaseSubstance substance;
 
@@ -99,7 +98,6 @@ public class Stick : RaycastInteractable
 
     public void ChangeHead(Material material)
     {
-
         transform.GetChild(0).GetComponent<Renderer>().material = material;
     }
 

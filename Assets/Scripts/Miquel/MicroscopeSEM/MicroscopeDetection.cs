@@ -8,7 +8,7 @@ public class MicroscopeDetection : MonoBehaviour
     [SerializeField] private bool activateDrawing;
     [SerializeField] private GameObject startScanButton;
 
-    SubstanceType sampleHit;
+    private SubstanceType sampleHit;
 
     // Detects the interior of the SEM
     public void Detect()
@@ -33,12 +33,6 @@ public class MicroscopeDetection : MonoBehaviour
             }
         }
     }
-
-    public SubstanceType GetSampleHit()
-    {
-        return sampleHit;
-    }
-
     private void OnDrawGizmos()
     {
         if (!activateDrawing) { return; }

@@ -19,7 +19,7 @@ public class PopupsManager : Singleton<PopupsManager>
 
     private Dictionary<int, string> localizationKeys = new();
 
-    void Start()
+    private void Start()
     {
         //LocalizationManager.Read();
         if (enableDebug)

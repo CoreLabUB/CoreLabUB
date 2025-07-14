@@ -8,12 +8,12 @@ public enum CardPerms { Archeolab = 0, Biolab = 1, Geolab = 2, Nanolab = 3 }
 
 public class MagneticCard : AttachableObject
 {
-    [SerializeField] CardPerms initialCardPerm;
+    [SerializeField] private CardPerms initialCardPerm;
 
-    Dictionary<CardPerms, bool> cardPerms = new Dictionary<CardPerms, bool>();
+    private Dictionary<CardPerms, bool> cardPerms = new Dictionary<CardPerms, bool>();
 
     // This list must follow the CardPerms enum order
-    [SerializeField] List<Material> cardMaterials = new List<Material>();
+    [SerializeField] private List<Material> cardMaterials = new List<Material>();
 
     protected override void Awake()
     {
