@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 public enum HandState { IDLE = 0, POINTING = 1, GRABBING = 2, INTERACT = 3 }
 public class Hand : MonoBehaviour
 {

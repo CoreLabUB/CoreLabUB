@@ -1,7 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-
 public enum SubstanceType { NULL, Pollen, Wine, Grass }
 public class BaseSubstance : RaycastTarget
 {

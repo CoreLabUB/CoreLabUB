@@ -1,10 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using Assets.SimpleLocalization.Scripts;
 using TMPro;
 using UnityEngine;
-using UnityEngine.AI;
 
 
 public enum Language { Catalan, Spanish, English }
