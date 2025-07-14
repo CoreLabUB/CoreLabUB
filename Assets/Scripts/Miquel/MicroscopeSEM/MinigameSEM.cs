@@ -119,13 +119,11 @@ public class MinigameSEM : MonoBehaviour
         // Inclusive-Exclusive, Random Pollen
         currentSubstanceNum = Random.Range(1, 4);
 
-        Debug.Log(substanceType.ToString());
-
         currentSubstanceImage.sprite = substanceSprites[substanceType.ToString() + currentSubstanceNum];
 
         // Prevent Getting The same photo
         // 2 is offset, %3 is to cycle (3 is the amount of photos), +1 because there is no photo 0.
-        substanceNumDB = (currentSubstanceNum + 2) % 3 + 1;
+        substanceNumDB = (currentSubstanceNum + 1) % 3 + 1;
 
         substanceDBImage.sprite = substanceSprites[substanceType.ToString() + substanceNumDB];
     }
