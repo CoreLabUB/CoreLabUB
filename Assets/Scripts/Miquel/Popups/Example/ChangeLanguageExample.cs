@@ -5,7 +5,6 @@ using Assets.SimpleLocalization.Scripts;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static Unity.VisualScripting.Icons;
 
 public class ChangeLanguageExample : MonoBehaviour
 {
@@ -13,10 +12,13 @@ public class ChangeLanguageExample : MonoBehaviour
     List<string> languages = new List<string>();
     void Start()
     {
+        // Read Spreadsheet
         LocalizationManager.Read();
 
+        // Complete Spreadsheet
         var temp = LocalizationManager.Dictionary;
 
+        // Instantiate and Configure language prefab for each Translation available (Catalan, Spanish and English)
         foreach (var language in temp.Keys)
         {
             languages.Add(language);
@@ -26,15 +28,14 @@ public class ChangeLanguageExample : MonoBehaviour
 
             prefab.transform.GetChild(1).GetComponent<TMP_Text>().text = LocalizationManager.Localize(String.Concat("LanguageNames", language));
 
-            // Button Onclick, Activate MainMenu and disable Language Selection
+            // Button Onclick, Changes Language
             prefab.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(() =>
             {
                 LocalizationManager.Language = language;
-
-                Debug.Log(language);
             });
         }
 
+        // Is called when LocalizationManager.Language changes
         LocalizationManager.OnLocalizationChanged += () =>
         {
             for (int i = 0; i < transform.GetChild(1).childCount; i++)

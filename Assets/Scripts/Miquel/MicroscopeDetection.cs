@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class MicroscopeDetection : MonoBehaviour
 {
     [SerializeField] private bool activateDrawing;
-    [SerializeField] private GameObject pcStartButton;
+    [SerializeField] private GameObject startScanButton;
+
+    SubstanceType sampleHit;
 
     // Detects the interior of the SEM
     public void Detect()
@@ -22,14 +24,19 @@ public class MicroscopeDetection : MonoBehaviour
 
             if (hit.transform.GetComponent<SubstanceSample>().GetSubstanceType() == SubstanceType.Pollen)
             {
-                // Start PC Minigame
-                pcStartButton.SetActive(true);
-            }
-            else
-            {
-                Destroy(hit.transform.gameObject);
+                startScanButton.SetActive(true);
+
+                sampleHit = hit.transform.gameObject.GetComponent<SubstanceSample>().GetSubstanceType();
+
+                startScanButton.transform.parent.GetComponent<MinigameSEM>().SetSubstanceType(sampleHit);
+                startScanButton.transform.parent.GetComponent<MinigameSEM>().SetSampleMicroscope(hit.transform.gameObject);
             }
         }
+    }
+
+    public SubstanceType GetSampleHit()
+    {
+        return sampleHit;
     }
 
     private void OnDrawGizmos()
