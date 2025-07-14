@@ -2,13 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : Singleton<AudioManager>
 {
-    private static AudioManager instance;
-    public static AudioManager Instance { get { if (instance == null) { instance = new AudioManager(); } return instance;  } }
-
     // Sounds are stored here
-    Dictionary<string, AudioClip> sounds;
+    private Dictionary<string, AudioClip> sounds;
 
     // Assign Audio Clips
     [SerializeField] private AudioClip cardReaderConfirmation;
@@ -22,12 +19,10 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
-
         sounds = new()
         {
-            {"CardReaderConfirmation", cardReaderConfirmation},
-            {"CardReaderError", cardReaderError},
+            { "CardReaderConfirmation", cardReaderConfirmation },
+            { "CardReaderError", cardReaderError },
 
             { "StickSuccess", stickSuccess }
         };

@@ -14,7 +14,7 @@ public class MainMenuUI : MonoBehaviour
 
     [SerializeField] private string sceneToPlay;
 
-    void Awake()
+    private void Awake()
     {
         SetPlayButton();
         SetCredits();

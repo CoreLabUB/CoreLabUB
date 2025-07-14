@@ -7,33 +7,37 @@ using UnityEngine.UI;
 public class MinigameSEM : MonoBehaviour
 {
     private SubstanceType substanceType;
-    int currentSubstanceNum;
-    int substanceNumDB;
-    string correctGraphic = "Quars";
+    private int currentSubstanceNum;
+    private int substanceNumDB;
+    private string correctGraphic = "Quars";
 
-    Image currentSubstanceImage;
-    Image substanceDBImage;
+    private Image currentSubstanceImage;
+    private Image substanceDBImage;
 
-    GameObject sampleMicroscope;
+    private GameObject sampleMicroscope;
 
     [SerializeField] private GameObject reportPrefab;
 
-    Dictionary<string, Sprite> substanceSprites = new Dictionary<string, Sprite>();
-    Dictionary<string, GameObject> hologramSubstances = new Dictionary<string, GameObject>();
+    private Dictionary<string, Sprite> substanceSprites = new Dictionary<string, Sprite>();
+    private Dictionary<string, GameObject> hologramSubstances = new Dictionary<string, GameObject>();
 
-    Button startScan;
-    Button nextPhotoDB;
-    Button prevPhotoDB;
-    Button checkPhotoDB;
-    Button sendReportToDB;
-    Button generateReport;
+    #region BUTTONS
+    private Button startScan;
+    private Button nextPhotoDB;
+    private Button prevPhotoDB;
+    private Button checkPhotoDB;
+    private Button sendReportToDB;
+    private Button generateReport;
+    #endregion
 
-    [SerializeField] GameObject substanceHologram;
-    Button zoomOut;
-    Button zoomIn;
-    int currentZoom = 1;
+    #region Hologram
+    [SerializeField] private GameObject substanceHologram;
+    private Button zoomOut;
+    private Button zoomIn;
+    private int currentZoom = 1;
+    #endregion
 
-    void Start()
+    private void Start()
     {
         // Put sprites in sub folders to get only the necessary reportSprites
         var resourcesSprites = Resources.LoadAll<Sprite>("ReportSprites");
@@ -41,7 +45,7 @@ public class MinigameSEM : MonoBehaviour
         {
             substanceSprites.Add(resourcesSprites[i].name, resourcesSprites[i]);
         }
-        
+
         // Put Prefabs in sub folders to get only the necessary hologramSubstances
         var resourcesHologram = Resources.LoadAll<GameObject>("HologramSubstances");
         for (int i = 0; i < resourcesHologram.Length; i++)
@@ -51,7 +55,7 @@ public class MinigameSEM : MonoBehaviour
             hologramSubstance.SetActive(false);
         }
 
-
+        #region Buttons' OnClick
         startScan = transform.GetChild(0).GetComponent<Button>();
         startScan.onClick.AddListener(() =>
         {
@@ -112,9 +116,11 @@ public class MinigameSEM : MonoBehaviour
             currentZoom++;
             ToggleHologramSubstance();
         });
+
+        #endregion
     }
 
-    public void StartMinigame()
+    private void StartMinigame()
     {
         // Inclusive-Exclusive, Random Pollen
         currentSubstanceNum = Random.Range(1, 4);
@@ -128,7 +134,7 @@ public class MinigameSEM : MonoBehaviour
         substanceDBImage.sprite = substanceSprites[substanceType.ToString() + substanceNumDB];
     }
 
-    public void CheckSubstanceType()
+    private void CheckSubstanceType()
     {
         if (currentSubstanceNum == substanceNumDB)
         {
@@ -154,14 +160,14 @@ public class MinigameSEM : MonoBehaviour
         Destroy(sampleMicroscope);
     }
 
-    public void NextSubstancePhotoDB()
+    private void NextSubstancePhotoDB()
     {
         if (substanceNumDB == 3) { return; }
         substanceNumDB++;
         substanceDBImage.sprite = substanceSprites[substanceType.ToString() + substanceNumDB];
     }
 
-    public void PreviousSubstancePhotoDB()
+    private void PreviousSubstancePhotoDB()
     {
         if (substanceNumDB == 1) { return; }
         substanceNumDB--;

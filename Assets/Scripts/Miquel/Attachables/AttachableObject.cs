@@ -9,8 +9,7 @@ public class AttachableObject : RaycastInteractable
     private Transform originPos;
     private GameObject attachTransform;
 
-    // Cancel() is called first then OnAttach, so this variable assures there is no teleportation
-    bool lockAttached = false;
+    private bool lockAttached = false;
 
     protected bool isAttatch = false;
 

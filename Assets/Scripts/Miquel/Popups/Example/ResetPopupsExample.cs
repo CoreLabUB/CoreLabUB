@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class ResetPopupsExample : MonoBehaviour
 {
-    [SerializeField] List<GameObject> popupsRaycasts;
+    [SerializeField] private List<GameObject> popupsRaycasts;
 
-    void Start()
+    private void Start()
     {
         transform.GetChild(0).GetComponent<Button>().onClick.AddListener(() =>
         {

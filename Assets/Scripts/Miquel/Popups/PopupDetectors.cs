@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PopupDetectors : PopupsRaycast
 {
-    void Update()
+    private void Update()
     {
         RaycastHit hit;
 

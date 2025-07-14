@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SubstanceSample : RaycastTarget
 {
-    bool hasSubstance = false;
-    GameObject sample;
-    SubstanceType substanceType;
+    private bool hasSubstance = false;
+    private GameObject sample;
+    private SubstanceType substanceType;
 
     protected override void Awake()
     {
@@ -14,7 +14,7 @@ public class SubstanceSample : RaycastTarget
         sample = transform.GetChild(0).GetChild(0).gameObject;
     }
 
-    public void InsertSubstance(Material sampleMaterial, SubstanceType substance)
+    private void InsertSubstance(Material sampleMaterial, SubstanceType substance)
     {
         sample.SetActive(true);
         sample.GetComponent<Renderer>().material = sampleMaterial;

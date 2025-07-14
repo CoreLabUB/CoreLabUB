@@ -7,8 +7,8 @@ public class AttachableBelt : AttachableInteractor
 {
     [SerializeField] private GameObject playerCamera;
     private Vector3 beltOffset = new(-0.1f,-0.5f,0);
-
-    void Update()
+    s
+    private void Update()
     {
         // 0 Forwards, -1 Backwards, -0.5 Left and Right
         // Checks Camera for Left and right

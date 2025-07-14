@@ -2,15 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RaycastTargetManager : MonoBehaviour
+public class RaycastTargetManager : Singleton<RaycastTargetManager>
 {
-    private static RaycastTargetManager instance;
-    public static RaycastTargetManager Instance { get { if (instance == null) { instance = new RaycastTargetManager(); } return instance; } }
-
     private Dictionary<int, RaycastTarget> activeRaycastTargets = new();
 
     private int currentId = 0;
-
 
     public void AddRaycastTarget(RaycastTarget raycasTarget)
     {
