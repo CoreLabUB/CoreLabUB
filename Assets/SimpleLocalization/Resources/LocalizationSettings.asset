@@ -20,4 +20,7 @@ MonoBehaviour:
   - Name: Popups
     Id: 0
     TextAsset: {fileID: 4900000, guid: 9323c86e31aff9f4e968ba63632063a4, type: 3}
+  - Name: MicroscopeSEM
+    Id: 1923853831
+    TextAsset: {fileID: 4900000, guid: 3e7a6ad446f452247a47fcb0731d30da, type: 3}
   SaveFolder: {fileID: 102900000, guid: c392831e85f928548b8494fefd912562, type: 3}
