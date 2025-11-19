@@ -3,7 +3,7 @@ using UnityEngine;
 
 
 // Permissions to access the Labs, order in which the labs are unlocked. switch order if needed
-public enum CardPerms { Archeolab = 0, Biolab = 1, Geolab = 2, Nanolab = 3 }
+public enum CardPerms { Archeolab = 0, Biolab = 1, Geolab = 2, Nanolab = 3, Entrance = 4 }
 
 public class MagneticCard : AttachableObject
 {
@@ -26,6 +26,7 @@ public class MagneticCard : AttachableObject
         cardPerms.Add(CardPerms.Biolab, false);
         cardPerms.Add(CardPerms.Geolab, false);
         cardPerms.Add(CardPerms.Nanolab, false);
+        cardPerms.Add(CardPerms.Entrance, false);
 
         // Change bool to True to Change Card perms and Material
         AddPerms(initialCardPerm);
