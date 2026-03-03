@@ -2505,6 +2505,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9151481191424826972}
     m_Modifications:
+    - target: {fileID: 4316339989323642834, guid: e91a2d156421dd54bb6ed5f535040703, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: d0c255d07fd68f14b94e55d388e7e6bb, type: 3}
     - target: {fileID: 5388833570293639505, guid: e91a2d156421dd54bb6ed5f535040703, type: 3}
       propertyPath: m_Name
       value: RightHand
@@ -2873,6 +2877,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeftHand
       objectReference: {fileID: 0}
+    - target: {fileID: 2054984450955121590, guid: 843eb4a29c549d847abe094ecfac60d2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: ca20b3907ff1c794cb89c1ad2cce8282, type: 3}
     - target: {fileID: 7266926483282017120, guid: 843eb4a29c549d847abe094ecfac60d2, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.07
