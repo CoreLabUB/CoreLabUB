@@ -3,7 +3,12 @@ guid: 5de3d50252ca93f469df17e78d4b3c86
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_LabPlate
+    second: {fileID: 2100000, guid: d499ef4860b58c94b9d11e2b35d31870, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
