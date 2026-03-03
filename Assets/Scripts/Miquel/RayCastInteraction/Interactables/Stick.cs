@@ -1,8 +1,8 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
-
 public enum StickState { GetSample, PutSample }
+
 public class Stick : RaycastInteractable
 {
     private bool enableDetection = true;
@@ -11,11 +11,10 @@ public class Stick : RaycastInteractable
     private StickState stickState = StickState.GetSample;
 
     private RaycastTarget previousTarget;
-
     private BaseSubstance substance;
 
-    private Vector3 headPosition  = new Vector3(0,0,0.02f);
-    private float rayDistance = 0.08f;
+    private Vector3 headPosition = new Vector3(0, 0, 0.02f);
+    [SerializeField] private float rayDistance = 0.25f;
 
     [SerializeField] protected LayerMask substanceLayer;
 
@@ -30,83 +29,119 @@ public class Stick : RaycastInteractable
 
         headAudio.Play();
         headAudio.Pause();
+
+        Debug.Log("Stick Awake");
     }
 
     public override void SelectEnter(GameObject hand)
     {
         base.SelectEnter(hand);
+        Debug.Log("Stick grabbed by: " + hand.name);
     }
 
     public override IEnumerator Grab()
     {
-        // Performance Optimization
-        if (!enableDetection) { yield return null; }
+        Debug.Log("Grab Coroutine STARTED");
 
-        while(isDragging)
+        if (!enableDetection)
         {
+            Debug.Log("Detection disabled");
+            yield return null;
+        }
+
+        while (isDragging)
+        {
+            Debug.Log("Raycasting...");
+
             Ray ray = new Ray(transform.position + headPosition, transform.forward);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, rayDistance, substanceLayer))
             {
-                RaycastTarget targetHit = hit.transform.GetComponent<RaycastTarget>();
+                Debug.Log("Raycast HIT: " + hit.transform.name);
 
-                if (previousTarget == null) // Initial Detection
-                { previousTarget = targetHit; }
+                BaseSubstance substanceHit = hit.transform.GetComponentInChildren<BaseSubstance>();
 
-                // Check if the targetHit is different from previousTarget to call previousTarget's OnRaycastExit
+                if (substanceHit == null)
+                {
+                    Debug.LogWarning("Hit object has NO BaseSubstance component");
+                    yield return null;
+                    continue;
+                }
+
+                RaycastTarget targetHit = substanceHit;
+
+                if (previousTarget == null)
+                {
+                    Debug.Log("Initial target detected");
+                    previousTarget = targetHit;
+                }
+
                 if (previousTarget.GetId() != targetHit.GetId())
                 {
+                    Debug.Log("Target changed");
                     previousTarget.OnRaycastExit(gameObject);
                     previousTarget = targetHit;
                 }
 
+                Debug.Log("Calling OnRaycastEnter on " + targetHit.name);
                 targetHit.OnRaycastEnter(gameObject);
 
                 hasHit = true;
             }
             else
             {
+                Debug.Log("Raycast missed");
+
                 if (previousTarget != null)
                 {
+                    Debug.Log("Calling OnRaycastExit on previous target");
                     previousTarget.OnRaycastExit(gameObject);
+                    previousTarget = null;
                 }
             }
 
             yield return null;
         }
 
-        yield return null;
+        Debug.Log("Grab Coroutine ENDED");
     }
 
     public override void SelectExit(GameObject hand)
     {
         base.SelectExit(hand);
 
-        // Performance Optimization
-        if (!hasHit) { return; }
+        Debug.Log("Stick released");
 
-        previousTarget.OnRaycastExit(gameObject);
+        if (!hasHit) return;
+
+        if (previousTarget != null)
+        {
+            previousTarget.OnRaycastExit(gameObject);
+        }
+
         headAudio.Pause();
-
         hasHit = false;
     }
 
     public void ChangeHead(Material material)
     {
+        Debug.Log("Changing head material");
         transform.GetChild(0).GetComponent<Renderer>().material = material;
     }
 
-    // Sets substance for future operations
     public void SetSubstance(BaseSubstance substanceFound)
     {
+        Debug.Log("Substance set: " + substanceFound.name);
         substance = substanceFound;
         stickState = StickState.PutSample;
-    }  
+    }
 
     public BaseSubstance GetSubstance()
-    { return substance; }
-    
+    {
+        return substance;
+    }
+
     public AudioSource GetHeadAudioSource()
     {
         return headAudio;
@@ -119,6 +154,12 @@ public class Stick : RaycastInteractable
 
     public Material GetSubstanceMaterial()
     {
+        if (substance == null)
+        {
+            Debug.LogWarning("Substance is NULL when requesting material");
+            return null;
+        }
+
         return substance.GetSubstanceMaterial();
     }
 
@@ -128,13 +169,19 @@ public class Stick : RaycastInteractable
         Gizmos.color = Color.blue;
         Gizmos.DrawRay(ray);
     }
+
     public void OnDestroy()
     {
-        if (!hasHit) { return; }
+        Debug.Log("Stick destroyed");
 
-        previousTarget.OnRaycastExit(gameObject);
+        if (!hasHit) return;
+
+        if (previousTarget != null)
+        {
+            previousTarget.OnRaycastExit(gameObject);
+        }
+
         headAudio.Pause();
-
         hasHit = false;
     }
 }
